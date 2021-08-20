@@ -1,8 +1,11 @@
 {
   "name": "@deck9/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Philipp Reinking <philipp@deck9.co> (https://deck9.co)",
+  "homepage": "https://github.com/Deck9/ui#readme",
+  "description": "The UI components used in deck9 software applications.",
+  "main": "src/main.js",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -49,8 +52,6 @@
     "last 2 versions",
     "not dead"
   ],
-  "description": "## Project setup ``` yarn install ```",
-  "main": "src/main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Deck9/ui.git"
@@ -61,6 +62,5 @@
   ],
   "bugs": {
     "url": "https://github.com/Deck9/ui/issues"
-  },
-  "homepage": "https://github.com/Deck9/ui#readme"
+  }
 }
