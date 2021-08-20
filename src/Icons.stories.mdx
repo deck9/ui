@@ -1,0 +1,24 @@
+<!--- Icons.stories.mdx -->
+
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import IconCollection from "./IconCollection.vue";
+import {icons} from "./Icon.vue";
+
+<Meta title="Reference/Icons Overview" component={IconCollection} />
+
+# Icons used in BotReach UI
+
+This page gives an overview of all icons used in BotReach UI.
+
+export const Primary = (args) => ({
+    components: {IconCollection},
+    setup() {
+      return {args, icons: icons};
+    },
+    template: '<icon-collection v-bind="{icons}" />',
+});
+
+<Story name="All">
+    {Primary.bind({})}
+</Story>
+

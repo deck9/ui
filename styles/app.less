@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: oblique 0deg 10deg;
+  src: url("../public/fonts/Inter.var.woff2?v=3.15") format("woff2");
+}
+
+* {
+  font-variation-settings: "slnt"0deg;
+}
+
+.italic {
+  font-variation-settings: "slnt"10deg;
+}
+
+body {
+  @apply font-sans;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
