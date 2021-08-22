@@ -9,7 +9,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'white',
+    default: 'dark',
     values: [
       {
         name: 'white',
