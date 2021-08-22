@@ -34,7 +34,7 @@
       v-if="isLoading"
       class="absolute inset-0 flex items-center justify-center"
     >
-      <Icon class="animate-spin" name="spinner-third" />
+      <Icon class="animate-spin" name="circle-notch" />
     </span>
   </button>
 </template>
