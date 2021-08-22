@@ -44,6 +44,7 @@
     "less": "^4.1.1",
     "less-loader": "^10.0.1",
     "postcss": "^8.3.6",
+    "storybook-dark-mode": "^1.0.8",
     "uuid": "^3.4.0",
     "vue-loader": "^16.5.0"
   },
