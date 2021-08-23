@@ -24,5 +24,12 @@ export const parameters = {
         value: '#0f172a',
       },
     ],
+    grid: {
+      cellSize: 16,
+      opacity: 0.2,
+      cellAmount: 6,
+      offsetX: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+      offsetY: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+    },
   },
 }
