@@ -12,7 +12,7 @@ export default {
           control: {type: 'select', options: icons},
       },
   },
-  decorators: [() => ({ template: '<div class="border-2 border-dashed border-grey-200 px-8 py-4 inline-block text-grey-600"><story/></div>' })],
+  decorators: [() => ({ template: '<div class="px-8 py-4 inline-block text-grey-50"><story/></div>' })],
 };
 
 const Template = (args, {argTypes}) => ({

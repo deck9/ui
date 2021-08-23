@@ -1,7 +1,22 @@
 <template>
   <div class="relative">
     <input
-      class="appearance-none block w-full text-grey-900 resize-none shadow-none bg-white font-sans max-w-xs placeholder-grey-500 border border-grey-200 focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+      class="
+        appearance-none
+        block
+        w-full
+        text-grey-900
+        resize-none
+        shadow-none
+        bg-white
+        font-sans
+        max-w-xs
+        placeholder-grey-500
+        border border-grey-200
+        focus:border-blue-300
+        focus:outline-none
+        focus:ring focus:ring-blue-300
+      "
       :placeholder="placeholder"
       :class="{ ...classes, ...textSizeClasses }"
       :type="type"
@@ -10,7 +25,16 @@
 
     <span
       v-if="icon"
-      class="absolute left-0 inset-y-0 inline-flex items-center justify-center text-blue-400 px-4"
+      class="
+        absolute
+        left-0
+        inset-y-0
+        inline-flex
+        items-center
+        justify-center
+        text-blue-400
+        px-4
+      "
       :class="textSizeClasses"
     >
       <Icon :name="icon" />
@@ -19,7 +43,7 @@
 </template>
 
 <script>
-import Icon from "./Icon";
+import Icon from "../Icon/Icon";
 
 export default {
   name: "ui-input-text",

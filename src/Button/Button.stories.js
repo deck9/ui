@@ -1,23 +1,23 @@
-import Button from './Button.vue';
-import { icons } from './Icon.vue';
+import { D9Button } from '../index';
+import { icons } from '../index';
 
 export default {
   title: 'BotReach/Button',
-  component: Button,
+  component: D9Button,
   argTypes: {
     type: { control: { type: 'select', options: ['primary', 'light', 'dark'] } },
     size: { control: { type: 'select', options: ['small', 'medium', 'large'] } },
-    icon: { control: {type: 'select', options: icons} },
+    icon: { control: { type: 'select', options: icons } },
     iconPosition: { control: { type: 'select', options: ['left', 'right'] } },
   },
 };
 
 const Template = (args) => ({
-  components: { Button },
+  components: { D9Button },
   setup() {
     return { args };
   },
-  template: '<Button v-bind="args" />',
+  template: '<d9-button v-bind="args" />',
 });
 
 export const Medium = Template.bind({});

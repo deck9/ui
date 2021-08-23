@@ -1,16 +1,16 @@
-import InputText from './InputText.vue';
-import InputLabel from './InputLabel.vue';
-import { icons } from './Icon.vue';
+import { D9Input } from '../index';
+import { D9Label } from '../index';
+import { icons } from '../index';
 import { v4 as uuidv4 } from 'uuid';
 import { ref } from "vue"
 
 export default {
-  title: 'Forms/InputText',
-  component: InputText,
-  argTypes: { 
-    type: { control: { type: 'inline-radio'}, options: ['text', 'password'] },
-    size: { control: { type: 'inline-radio'}, options: ['small', 'medium', 'large'] },
-    icon: { control: {type: 'select'}, options: icons },
+  title: 'Forms/Input',
+  component: D9Input,
+  argTypes: {
+    type: { control: { type: 'inline-radio' }, options: ['text', 'password'] },
+    size: { control: { type: 'inline-radio' }, options: ['small', 'medium', 'large'] },
+    icon: { control: { type: 'select' }, options: icons },
   },
 };
 
@@ -21,11 +21,11 @@ const Template = (args) => ({
       uid: ref(uuidv4())
     };
   },
-  components: {InputText, InputLabel},
+  components: { D9Input, D9Label },
   template: `
   <div>
-    <input-label :id="uid" label="This is a label" />
-    <input-text v-bind="args" />
+    <d9-label :id="uid" label="This is a label" />
+    <d9-input v-bind="args" />
   </div>
   `
 });

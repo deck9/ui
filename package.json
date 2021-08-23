@@ -5,7 +5,7 @@
   "author": "Philipp Reinking <philipp@deck9.co> (https://deck9.co)",
   "homepage": "https://github.com/Deck9/ui#readme",
   "description": "The UI components used in deck9 software applications.",
-  "main": "src/main.js",
+  "main": "src/index.js",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -17,8 +17,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-4",
     "@tailwindcss/typography": "^0.4.1",
     "core-js": "^3.6.5",
-    "tailwindcss": "^2.2.7",
-    "vue": "^3.0.0"
+    "tailwindcss": "^2.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -31,21 +30,20 @@
     "@storybook/builder-webpack5": "^6.3.7",
     "@storybook/manager-webpack5": "^6.3.7",
     "@storybook/vue3": "^6.3.7",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/compiler-sfc": "^3.0.0",
-    "autoprefixer": "^10.3.1",
+    "autoprefixer": "^10.3.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^3.6.0",
-    "eslint": "^6.7.2",
+    "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.0.0",
     "less": "^4.1.1",
     "less-loader": "^10.0.1",
     "postcss": "^8.3.6",
     "storybook-dark-mode": "^1.0.8",
     "uuid": "^3.4.0",
+    "vue": "^3.2.4",
     "vue-loader": "^16.5.0"
   },
   "browserslist": [

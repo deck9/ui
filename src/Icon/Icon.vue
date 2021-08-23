@@ -73,8 +73,6 @@ library.add(
 export const icons = [...Object.keys(library.definitions.fas)].sort();
 
 export default {
-  name: "icon",
-
   components: { FontAwesomeIcon },
 
   props: {
