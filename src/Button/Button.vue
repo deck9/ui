@@ -1,16 +1,6 @@
 <template>
   <button
-    class="
-      relative
-      inline-flex
-      items-center
-      focus:outline-none
-      focus:ring
-      active:ring
-      transition
-      duration-150
-      ease-in-out
-    "
+    class="relative inline-flex items-center focus:outline-none focus:ring active:ring transition duration-150 ease-in-out"
     type="button"
     :aria-label="label"
     :class="classes"
@@ -43,25 +33,28 @@
 import Icon from "../Icon/Icon";
 import { computed, withDefaults } from "vue";
 
-const emit = defineEmits<{ (e: "onClick"): void }>({});
+interface ButtonProps {
+  label: string;
+  size?: "small" | "medium" | "large" | undefined;
+  type?: "primary" | "light" | "dark" | undefined;
+  isLoading?: boolean | undefined;
+  isDisabled?: boolean | undefined;
+  icon?: string | undefined;
+  iconPosition?: "left" | "right" | undefined;
+}
 
-const props = withDefaults(
-  defineProps<{
-    label: string;
-    size?: "small" | "medium" | "large";
-    type?: "primary" | "light" | "dark";
-    isLoading: boolean;
-    isDisabled: boolean;
-    icon?: string;
-    iconPosition?: "left" | "right";
-  }>({}),
-  {
-    size: "medium",
-    type: "primary",
-    isLoading: false,
-    isDisabled: false,
-  }
-);
+interface ButtonEmits {
+  (e: "onClick"): void;
+}
+
+const emit = defineEmits<ButtonEmits>();
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  size: "medium",
+  type: "primary",
+  isLoading: false,
+  isDisabled: false,
+});
 
 const classes = computed(() => {
   return {
