@@ -7,13 +7,13 @@
     @click="onClick"
   >
     <div :class="!isLoading || 'invisible'">
-      <Icon
+      <D9Icon
         v-if="icon && iconPosition === 'left'"
         :name="icon"
         :class="iconClasses"
       />
       <span>{{ label }}</span>
-      <Icon
+      <D9Icon
         v-if="icon && iconPosition === 'right'"
         :name="icon"
         :class="iconClasses"
@@ -24,23 +24,24 @@
       v-if="isLoading"
       class="absolute inset-0 flex items-center justify-center"
     >
-      <Icon class="animate-spin" name="circle-notch" />
+      <D9Icon class="animate-spin" name="circle-notch" />
     </span>
   </button>
 </template>
 
 <script setup lang="ts">
-import Icon from "../Icon/Icon";
+import { D9Icon } from "@/index";
+import { ColorScheme, PositionHorizontal, Size } from "@/types";
 import { computed, withDefaults } from "vue";
 
 interface ButtonProps {
   label: string;
-  size?: "small" | "medium" | "large" | undefined;
-  type?: "primary" | "light" | "dark" | undefined;
-  isLoading?: boolean | undefined;
-  isDisabled?: boolean | undefined;
-  icon?: string | undefined;
-  iconPosition?: "left" | "right" | undefined;
+  size?: Size;
+  type?: ColorScheme;
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  icon?: string;
+  iconPosition?: PositionHorizontal;
 }
 
 interface ButtonEmits {
