@@ -1,0 +1,51 @@
+<!--- Icons.stories.mdx -->
+
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { icons } from "./index";
+
+<Meta title="Reference/Typography" />
+
+# Icons used in BotReach UI
+
+This page gives an overview of all icons used in BotReach UI.
+
+export const Primary = (args) => ({
+    template: `
+<div class="text-white space-y-8">
+    <div>
+        <h1 class="text-2xl font-bold casual-0 mono-100">
+            Same font, but different
+        </h1>
+        <span class="font-mono bg-grey-800 inline-block py-1 px-2 text-xs">mono-100 casual-0
+            <span class="hidden text-red-500">hover:mono-0</span></span>
+    </div>
+    <div>
+        <h1 class="text-2xl font-bold casual-100 mono-100">
+            Same font, more casual
+        </h1>
+        <span class="font-mono bg-grey-800 inline-block py-1 px-2 text-xs">mono-100 casual-100</span>
+    </div>
+    <div>
+        <h1 class="text-2xl font-bold casual-100 mono-0">
+            No mono, but casual
+        </h1>
+        <span class="font-mono bg-grey-800 inline-block py-1 px-2 text-xs">mono-0 casual-100</span>
+    </div>
+    <div>
+        <h1 class="text-2xl font-bold casual-100 mono-0">
+            <span class="italic-mild">Italic, but mild</span><br />
+            <span class="italic">Italic, the default</span><br />
+            <span class="italic-intense">Italic, but intense</span>
+        </h1>
+        <span class="font-mono bg-grey-800 inline-block py-1 px-2 text-xs">a) italic-mild; b) italic; c)
+            italic-intense</span>
+    </div>
+</div>
+      `,
+});
+
+
+<Story name="All">
+  {Primary.bind({})}
+</Story>
+

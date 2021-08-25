@@ -1,20 +1,13 @@
 @font-face {
-  font-family: 'Inter var';
-  font-weight: 100 900;
+  font-family: 'Recursive var';
+  font-weight: 300 1000;
+  font-style: oblique 0deg 15deg;
   font-display: swap;
-  font-style: oblique 0deg 10deg;
-  src: url("../public/fonts/Inter.var.woff2?v=3.15") format("woff2");
-}
-
-* {
-  font-variation-settings: "slnt"0deg;
-}
-
-.italic {
-  font-variation-settings: "slnt"10deg;
+  src: url("../public/fonts/Recursive_VF_1.078--subset-GF_latin_basic.woff2") format("woff2");
 }
 
 body {
+  font-feature-settings: "dlig"1, "liga"1;
   @apply font-sans;
 }
 
