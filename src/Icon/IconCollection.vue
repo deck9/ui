@@ -17,6 +17,7 @@
 
 <script>
 import Icon from "./Icon.vue";
+
 export default {
   name: "icon-collection",
 

@@ -1,85 +1,33 @@
 <template>
-  <font-awesome-icon :icon="['fas', name]" v-bind="$attrs" />
+  <font-awesome-icon
+    v-if="isIconAvailable"
+    :icon="['fas', name]"
+    v-bind="$attrs"
+  />
 </template>
 
-<script>
-import { library } from "@fortawesome/fontawesome-svg-core";
+<script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { withDefaults, computed } from "vue";
+import { icons } from "@/index";
 
-import {
-  faChartPie,
-  faCheck,
-  faCheckCircle,
-  faChevronDown,
-  faChevronLeft,
-  faChevronRight,
-  faChevronUp,
-  faCircleNotch,
-  faClipboard,
-  faCog,
-  faDoorOpen,
-  faEllipsisH,
-  faEnvelope,
-  faExclamationTriangle,
-  faFingerprint,
-  faGlobe,
-  faHandPointRight,
-  faInfoCircle,
-  faPencilAlt,
-  faPlayCircle,
-  faPlus,
-  faPlusCircle,
-  faRobot,
-  faSave,
-  faShieldAlt,
-  faTimes,
-  faTrash,
-  faUser,
-  faUserShield,
-} from "@fortawesome/free-solid-svg-icons";
+interface IconProps {
+  name: string;
+}
 
-library.add(
-  faChartPie,
-  faCheck,
-  faCheckCircle,
-  faChevronDown,
-  faChevronLeft,
-  faChevronRight,
-  faChevronUp,
-  faCircleNotch,
-  faClipboard,
-  faCog,
-  faDoorOpen,
-  faEllipsisH,
-  faEnvelope,
-  faExclamationTriangle,
-  faFingerprint,
-  faGlobe,
-  faHandPointRight,
-  faInfoCircle,
-  faPencilAlt,
-  faPlayCircle,
-  faPlus,
-  faPlusCircle,
-  faRobot,
-  faSave,
-  faShieldAlt,
-  faTimes,
-  faTrash,
-  faUser,
-  faUserShield
-);
+const props = withDefaults(defineProps<IconProps>(), {
+  name: "user",
+});
 
-export const icons = [...Object.keys(library.definitions.fas)].sort();
-
-export default {
-  components: { FontAwesomeIcon },
-
-  props: {
-    name: {
-      type: String,
-      default: "user",
-    },
-  },
-};
+const isIconAvailable = computed((): boolean => {
+  if (icons.includes(props.name)) {
+    return true;
+  } else {
+    console.warn(
+      "could not load icon, because it is not available",
+      props.name
+    );
+    return false;
+  }
+});
 </script>
