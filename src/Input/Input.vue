@@ -1,108 +1,66 @@
 <template>
   <div class="relative">
     <input
-      class="
-        appearance-none
-        block
-        w-full
-        text-grey-900
-        resize-none
-        shadow-none
-        bg-white
-        font-sans
-        max-w-xs
-        placeholder-grey-500
-        border border-grey-200
-        focus:border-blue-300
-        focus:outline-none
-        focus:ring focus:ring-blue-300
-      "
+      class="mono-50 bg-grey-800 text-grey-100 placeholder-grey-400 border-grey-700 focus:border-blue-800 focus:ring-blue-800"
       :placeholder="placeholder"
-      :class="{ ...classes, ...textSizeClasses }"
+      :class="{ ...inputClasses, ...textSizeClasses }"
       :type="type"
       @input="input"
     />
 
     <span
       v-if="icon"
-      class="
-        absolute
-        left-0
-        inset-y-0
-        inline-flex
-        items-center
-        justify-center
-        text-blue-400
-        px-4
-      "
+      class="absolute left-0 inset-y-0 inline-flex items-center justify-center text-grey-100 px-4"
       :class="textSizeClasses"
     >
-      <Icon :name="icon" />
+      <D9Icon :name="icon" />
     </span>
   </div>
 </template>
 
-<script>
-import Icon from "../Icon/Icon";
+<script setup lang="ts">
+import { D9Icon } from "@/index";
+import { Size } from "@/types";
+import { computed, withDefaults } from "vue";
 
-export default {
-  name: "ui-input-text",
+interface InputProps {
+  type: string;
+  placeholder?: string;
+  size?: Size;
+  icon?: string;
+}
 
-  components: { Icon },
+interface InputEmits {
+  (e: "onInput"): void;
+}
 
-  props: {
-    type: {
-      type: String,
-      default: "text",
-      validator: (value) => {
-        return ["text", "password"].includes(value);
-      },
-    },
+const props = withDefaults(defineProps<InputProps>(), {
+  type: "text",
+  size: "medium",
+});
 
-    placeholder: {
-      type: String,
-      default: "",
-    },
+const emit = defineEmits<InputEmits>();
 
-    size: {
-      type: String,
-      default: "medium",
-      validator: (value) => {
-        return ["small", "medium", "large"].includes(value);
-      },
-    },
+const inputClasses = computed(() => {
+  return {
+    "px-3 py-1 rounded font-normal": props.size === "small",
+    "px-4 py-3 rounded font-normal": props.size === "medium",
+    "px-6 py-4 rounded font-normal": props.size === "large",
 
-    icon: {
-      type: String,
-      default: null,
-    },
-  },
+    "pl-10": props.icon && props.size === "small",
+    "pl-12": props.icon && (props.size === "medium" || props.size === "large"),
+  };
+});
 
-  computed: {
-    classes() {
-      return {
-        "px-3 py-2 rounded font-normal": this.size === "small",
-        "px-4 py-3 rounded font-normal": this.size === "medium",
-        "px-6 py-4 rounded font-normal": this.size === "large",
+const textSizeClasses = computed(() => {
+  return {
+    "text-xs leading-4": props.size === "small",
+    "text-sm leading-4": props.size === "medium",
+    "text-lg leading-4": props.size === "large",
+  };
+});
 
-        "pl-10": this.icon && this.size === "small",
-        "pl-12": this.icon && (this.size === "medium" || this.size === "large"),
-      };
-    },
-
-    textSizeClasses() {
-      return {
-        "text-xs leading-5": this.size === "small",
-        "text-sm leading-5": this.size === "medium",
-        "text-lg leading-4": this.size === "large",
-      };
-    },
-  },
-
-  methods: {
-    input(value) {
-      this.$emit("onInput", value);
-    },
-  },
+const input = function (value): void {
+  emit("onInput", value);
 };
 </script>
