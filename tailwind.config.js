@@ -3,7 +3,9 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  mode: "jit",
   purge: {
+    content: ["./src/**/*.vue"],
     whitelistPatterns: [/svg.*/, /fa.*/],
   },
   darkMode: "class",
@@ -41,6 +43,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("@deck9/tailwindcss-recursive-font-helper"),
   ],
