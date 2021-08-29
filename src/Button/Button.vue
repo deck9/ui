@@ -59,11 +59,11 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const buttonClasses = computed(() => {
   const colors = {
-    "text-white bg-blue-600 border-transparent hover:bg-blue-700 active:bg-blue-700 ring-blue-800":
+    "text-white bg-blue-600 border-transparent hover:bg-blue-700 active:bg-blue-700 dark:ring-blue-800":
       props.type === "primary",
     "text-blue-600 bg-white border-transparent hover:bg-blue-100 hover:text-blue-700 active:bg-grey-100 ring-blue-300":
       props.type === "light",
-    "text-grey-50 bg-grey-700 border-transparent hover:bg-grey-800 active:bg-grey-900 ring-grey-300 ring-opacity-50":
+    "text-grey-50 bg-grey-700 border-transparent hover:bg-grey-800 active:bg-grey-900 ring-grey-500 dark:ring-grey-300 dark:ring-opacity-50":
       props.type === "dark",
   };
 
