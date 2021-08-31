@@ -68,7 +68,7 @@ const buttonClasses = computed(() => {
       props.type === "dark",
   };
 
-  const ux = {
+  const disabledClasses = {
     "pointer-events-none opacity-75 cursor-not-allowed": props.isDisabled,
   };
 
@@ -82,7 +82,7 @@ const buttonClasses = computed(() => {
 
   return {
     ...colors,
-    ...ux,
+    ...disabledClasses,
     ...sizes,
   };
 });

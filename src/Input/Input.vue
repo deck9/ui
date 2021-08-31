@@ -3,9 +3,10 @@
     <input
       class="mono-50 bg-grey-50 text-grey-800 placeholder-grey-600 border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:border-blue-400 focus:ring-blue-400 dark:focus:border-blue-800 dark:focus:ring-blue-800"
       :placeholder="placeholder"
-      :class="{ ...inputClasses, ...textSizeClasses }"
+      :class="{ ...inputClasses, ...textSizeClasses, ...disabledClasses }"
       :type="type"
       @input="input"
+      :tabindex="isDisabled ? '-1' : null"
     />
 
     <span
@@ -28,6 +29,7 @@ interface InputProps {
   placeholder?: string;
   size?: Size;
   icon?: string;
+  isDisabled?: boolean;
 }
 
 interface InputEmits {
@@ -37,6 +39,7 @@ interface InputEmits {
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   size: "medium",
+  isDisabled: false,
 });
 
 const emit = defineEmits<InputEmits>();
@@ -49,6 +52,12 @@ const inputClasses = computed(() => {
 
     "pl-10": props.icon && props.size === "small",
     "pl-12": props.icon && (props.size === "medium" || props.size === "large"),
+  };
+});
+
+const disabledClasses = computed(() => {
+  return {
+    "pointer-events-none opacity-50 cursor-not-allowed": props.isDisabled,
   };
 });
 

@@ -44,6 +44,12 @@ Large.args = {
   size: "large",
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  placeholder: "Your Input",
+  isDisabled: true,
+};
+
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   placeholder: "Your Input",
