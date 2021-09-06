@@ -33,4 +33,5 @@ library.add(
   fasIcons.faUserShield
 );
 
-export default [...Object.keys(library.definitions.fas)].sort();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default [...Object.keys((library as any).definitions.fas)].sort();

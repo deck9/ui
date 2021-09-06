@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { D9Icon } from "../index";
-import { ColorScheme, PositionHorizontal, Size } from "@/types";
+import { ColorScheme, PositionHorizontal, Size } from "../types";
 import { computed, withDefaults } from "vue";
 
 interface ButtonProps {
