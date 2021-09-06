@@ -1,1 +1,1 @@
-export { default as D9Label } from './Label.vue'
+export { default as D9Label } from "./Label.vue";

@@ -20,8 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import { D9Icon } from "@/index";
-import { Size } from "@/types";
+import { D9Icon } from "../index";
+import { Size } from "../types";
 import { computed, withDefaults } from "vue";
 
 interface InputProps {
@@ -33,7 +33,7 @@ interface InputProps {
 }
 
 interface InputEmits {
-  (e: "onInput"): void;
+  (e: "onInput", value: string): void;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -69,7 +69,7 @@ const textSizeClasses = computed(() => {
   };
 });
 
-const input = function (value): void {
+const input = function (value: string): void {
   emit("onInput", value);
 };
 </script>

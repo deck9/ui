@@ -1,1 +1,1 @@
-export { default as D9Checkbox } from './Checkbox.vue'
+export { default as D9Checkbox } from "./Checkbox.vue";

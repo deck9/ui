@@ -1,1 +1,1 @@
-export { default as D9Input } from './Input.vue'
+export { default as D9Input } from "./Input.vue";

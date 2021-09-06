@@ -7,8 +7,6 @@
 
 <script>
 export default {
-  name: "ui-input-label",
-
   props: {
     id: { type: String, required: true },
     label: { type: String, required: true },
