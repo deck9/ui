@@ -2,11 +2,11 @@
   <div class="relative">
     <input
       class="mono-50 bg-grey-50 text-grey-800 placeholder-grey-600 border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:border-blue-400 focus:ring-blue-400 dark:focus:border-blue-800 dark:focus:ring-blue-800"
-      :placeholder="placeholder"
       :class="{ ...inputClasses, ...textSizeClasses, ...disabledClasses }"
+      :placeholder="placeholder"
       :type="type"
-      @input="input($event)"
       :tabindex="isDisabled ? '-1' : undefined"
+      @input="onInput"
     />
 
     <span
@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { D9Icon } from "../index";
 import { Size } from "../types";
-import { computed, withDefaults } from "vue";
+import { computed, InputHTMLAttributes, withDefaults } from "vue";
 
 interface InputProps {
   type: string;
@@ -33,7 +33,7 @@ interface InputProps {
 }
 
 interface InputEmits {
-  (e: "onInput", value: Event): void;
+  (e: "onInput", value: string): void;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -69,7 +69,7 @@ const textSizeClasses = computed(() => {
   };
 });
 
-const input = function (payload: Event): void {
-  emit("onInput", payload);
+const onInput = function (payload: Event): void {
+  emit("onInput", (payload?.target as InputHTMLAttributes).value);
 };
 </script>
