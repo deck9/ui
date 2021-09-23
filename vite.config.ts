@@ -10,8 +10,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "ui",
-      fileName: (format) => `ui.${format}.js`,
+      name: "index",
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       external: [
