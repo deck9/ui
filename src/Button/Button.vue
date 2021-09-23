@@ -4,7 +4,7 @@
     type="button"
     :aria-label="label"
     :class="buttonClasses"
-    :tabindex="isDisabled ? '-1' : null"
+    :tabindex="isDisabled ? '-1' : undefined"
     @click="onClick"
   >
     <div :class="!isLoading || 'invisible'">
