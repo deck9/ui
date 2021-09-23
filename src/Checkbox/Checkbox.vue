@@ -40,9 +40,9 @@ interface CheckboxEmits {
   (e: "update:modelValue"): void;
 }
 
-const props = withDefaults(defineProps<CheckboxProps>(), {
+withDefaults(defineProps<CheckboxProps>(), {
   id: uuidv4(),
 });
 
-const emit = defineEmits<CheckboxEmits>();
+defineEmits<CheckboxEmits>();
 </script>

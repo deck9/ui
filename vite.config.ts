@@ -27,12 +27,7 @@ export default defineConfig({
       },
       plugins: [
         typescript({
-          target: "es5",
-          rootDir: path.resolve(__dirname, "./src"),
-          declaration: true,
-          declarationDir: path.resolve(__dirname, "./dist"),
-          exclude: path.resolve(__dirname, "./node_modules/**"),
-          allowSyntheticDefaultImports: true,
+          tsconfig: "./tsconfig.json",
         }),
       ],
     },

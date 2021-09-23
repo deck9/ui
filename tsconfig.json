@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -11,9 +11,11 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "noUnusedLocals": true,
     "outDir": "dist",
     "declaration": true,
-    "declarationDir": ".",
+    "declarationDir": "./dist",
+    "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -33,9 +35,11 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.vue",
+    "types/**.d.ts",
   ],
   "exclude": [
     "node_modules",
+    "dist",
     "./tailwind.config.js",
     "./**/*.stories.ts"
   ]

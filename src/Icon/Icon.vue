@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { withDefaults, computed } from "vue";
-import { icons } from "../index";
+import icons from "./registerIcons";
 
 interface IconProps {
   name: string;
