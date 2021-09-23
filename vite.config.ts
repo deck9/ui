@@ -14,7 +14,12 @@ export default defineConfig({
       fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue"],
+      external: [
+        "vue",
+        "@fortawesome/fontawesome-svg-core",
+        "@fortawesome/free-solid-svg-icons",
+        "@fortawesome/vue-fontawesome",
+      ],
       output: {
         globals: {
           vue: "Vue",
