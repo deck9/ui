@@ -5,8 +5,8 @@
       :placeholder="placeholder"
       :class="{ ...inputClasses, ...textSizeClasses, ...disabledClasses }"
       :type="type"
-      @input="input"
-      :tabindex="isDisabled ? '-1' : null"
+      @input="input($event)"
+      :tabindex="isDisabled ? '-1' : undefined"
     />
 
     <span
@@ -33,7 +33,7 @@ interface InputProps {
 }
 
 interface InputEmits {
-  (e: "onInput", value: string): void;
+  (e: "onInput", value: Event): void;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -69,7 +69,7 @@ const textSizeClasses = computed(() => {
   };
 });
 
-const input = function (value: string): void {
-  emit("onInput", value);
+const input = function (payload: Event): void {
+  emit("onInput", payload);
 };
 </script>
