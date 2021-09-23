@@ -54,6 +54,7 @@ const emit = defineEmits<ButtonEmits>();
 const props = withDefaults(defineProps<ButtonProps>(), {
   size: "medium",
   type: "primary",
+  iconPosition: "right",
   isLoading: false,
   isDisabled: false,
 });
