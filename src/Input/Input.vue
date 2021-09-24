@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
-import { Size } from "../../types";
+import { Size } from "../types";
 import { computed, InputHTMLAttributes, withDefaults } from "vue";
 
 interface InputProps {

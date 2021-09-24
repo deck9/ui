@@ -5,12 +5,12 @@
   </span>
 </template>
 
-<script>
-export default {
-  props: {
-    id: { type: String, required: true },
-    label: { type: String, required: true },
-    description: { type: String, default: undefined },
-  },
+<script lang="ts" setup>
+type Props = {
+  id: string;
+  label: string;
+  description: string;
 };
+
+defineProps<Props>();
 </script>
