@@ -9,19 +9,9 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "types": [
-      "webpack-env"
-    ],
-    "lib": [
-      "esnext",
-      "dom"
-    ]
+    "lib": ["esnext", "dom"],
+    "types": []
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "./tailwind.config.js",
-    "./**/*.stories.ts"
-  ]
+  "exclude": ["./node_modules", "**/*.stories.ts"]
 }

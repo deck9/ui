@@ -43,11 +43,11 @@ interface ButtonProps {
   isDisabled?: boolean;
   icon?: string;
   iconPosition?: PositionHorizontal;
-}
+};
 
 interface ButtonEmits {
   (e: "onClick"): void;
-}
+};
 
 const emit = defineEmits<ButtonEmits>();
 
