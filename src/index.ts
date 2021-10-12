@@ -5,3 +5,4 @@ export * from "./Input/index";
 export * from "./Label/index";
 export * from "./Switch/index";
 export * from "./Skeleton/index";
+export * from "./Spinner/index";
