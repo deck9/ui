@@ -6,7 +6,7 @@ export default {
   component: D9Switch,
 };
 
-const Template = (args: any) => ({
+const Template = (args: Record<string, unknown>) => ({
   components: { D9Switch },
   setup() {
     const enabled = ref(args.modelValue ? true : false);

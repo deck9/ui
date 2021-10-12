@@ -6,7 +6,7 @@ export default {
   component: D9Checkbox,
 };
 
-const Template = (args: any) => ({
+const Template = (args: Record<string, unknown>) => ({
   components: { D9Checkbox },
   setup() {
     const checked = ref(args.modelValue ? true : false);

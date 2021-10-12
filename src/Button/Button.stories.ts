@@ -17,7 +17,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template = (args: Record<string, unknown>) => ({
   components: { D9Button },
   setup() {
     return { args };

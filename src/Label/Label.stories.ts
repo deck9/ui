@@ -5,10 +5,10 @@ export default {
   component: D9Label,
 };
 
-export const Default = (args) => ({
-  components: {D9Label},
+export const Default = (args: Record<string, unknown>) => ({
+  components: { D9Label },
   setup() {
-    return {args};
+    return { args };
   },
   template: '<d9-label id="name" label="Your name" />',
 });
