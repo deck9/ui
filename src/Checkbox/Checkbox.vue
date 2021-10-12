@@ -2,7 +2,17 @@
   <div class="relative flex items-start">
     <div class="flex items-center h-5">
       <input
-        class="h-4 w-4 border-grey-600 dark:text-blue-500 dark:border-grey-300 dark:checked:border-blue-500 dark:focus:ring-blue-900 dark:focus:ring-offset-grey-800 rounded-sm"
+        class="
+          h-4
+          w-4
+          border-grey-600
+          dark:text-blue-500
+          dark:border-grey-300
+          dark:checked:border-blue-500
+          dark:focus:ring-blue-900
+          dark:focus:ring-offset-grey-800
+          rounded-sm
+        "
         type="checkbox"
         :checked="modelValue"
         :id="id"
@@ -33,7 +43,6 @@ interface CheckboxProps {
   label: string;
   modelValue: boolean;
   description?: string;
-  checked?: boolean;
 }
 
 interface CheckboxEmits {
