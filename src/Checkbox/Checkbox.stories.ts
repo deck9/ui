@@ -1,4 +1,5 @@
 import D9Checkbox from "./Checkbox.vue";
+import { ref } from "vue";
 
 export default {
   title: "Forms/Checkbox",
@@ -8,9 +9,11 @@ export default {
 const Template = (args: any) => ({
   components: { D9Checkbox },
   setup() {
-    return { args };
+    const checked = ref(args.modelValue ? true : false);
+
+    return { args, checked };
   },
-  template: '<d9-checkbox v-bind="args" />',
+  template: '<d9-checkbox v-bind="args" v-model="checked" />',
 });
 
 export const WithLabel = Template.bind({});

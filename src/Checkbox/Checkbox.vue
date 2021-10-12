@@ -15,6 +15,7 @@
         "
         type="checkbox"
         :checked="modelValue"
+        @change="update"
         :id="id"
       />
     </div>
@@ -46,12 +47,16 @@ interface CheckboxProps {
 }
 
 interface CheckboxEmits {
-  (e: "update:modelValue"): void;
+  (e: "update:modelValue", checked: boolean): void;
 }
 
 withDefaults(defineProps<CheckboxProps>(), {
   id: uuidv4(),
 });
 
-defineEmits<CheckboxEmits>();
+const emits = defineEmits<CheckboxEmits>();
+
+const update = (value: Event) => {
+  emits("update:modelValue", (value.target as HTMLInputElement).checked);
+};
 </script>
