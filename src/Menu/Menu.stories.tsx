@@ -14,9 +14,9 @@ const Template = (args: Record<string, unknown>) => ({
   render() {
     return (
       <d9-menu class="text-blue-400">
-        <d9-menu-item as="a" href="#">Account</d9-menu-item>
-        <d9-menu-item as="a" href="#">System Settings</d9-menu-item>
-        <d9-menu-item as="a" href="#">Logout</d9-menu-item>
+        <d9-menu-item as="a" href="#" label="Account"></d9-menu-item>
+        <d9-menu-item as="a" href="#" label="System Settings"></d9-menu-item>
+        <d9-menu-item as="a" href="#" label="Logout"></d9-menu-item>
       </d9-menu>
     )
   }

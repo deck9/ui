@@ -15,7 +15,19 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems
-        class="origin-top-left absolute left-0 mt-2 py-1 bg-white w-56 rounded shadow-lg text-grey-700 focus:outline-none"
+        class="
+          origin-top-left
+          absolute
+          left-0
+          mt-1
+          py-1
+          bg-white
+          w-56
+          rounded
+          shadow-lg
+          text-grey-700
+          focus:outline-none
+        "
       >
         <slot></slot>
       </MenuItems>

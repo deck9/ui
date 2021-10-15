@@ -11,12 +11,15 @@
       "
       :class="active ? 'bg-grey-200' : ''"
       v-bind="$attrs"
+      >{{ label }}</span
     >
-      <slot></slot>
-    </span>
   </MenuItem>
 </template>
 
 <script setup lang="ts">
 import { MenuItem } from "@headlessui/vue";
+
+defineProps<{
+  label?: string;
+}>();
 </script>
