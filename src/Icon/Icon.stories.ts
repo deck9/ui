@@ -2,7 +2,7 @@ import { D9Icon } from "@/index";
 import { icons } from "@/index";
 
 export default {
-  title: "BotReach/Icon",
+  title: "Basics/Icon",
   component: D9Icon,
   argTypes: {
     size: {

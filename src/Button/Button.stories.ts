@@ -2,7 +2,7 @@ import { D9Button } from "../index";
 import { icons } from "../index";
 
 export default {
-  title: "BotReach/Button",
+  title: "Basics/Button",
   component: D9Button,
   argTypes: {
     type: {
