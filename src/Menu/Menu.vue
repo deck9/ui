@@ -15,19 +15,10 @@
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems
-        class="
-          origin-top-left
-          absolute
-          left-0
-          mt-1
-          py-1
-          bg-white
-          w-56
-          rounded
-          shadow-lg
-          text-grey-700
-          focus:outline-none
-        "
+        :class="[
+          { 'left-0': position === 'right', 'right-0': position === 'left' },
+          'origin-top-left absolute mt-1 py-1 bg-white w-56 rounded shadow-lg text-grey-700 focus:outline-none',
+        ]"
       >
         <slot></slot>
       </MenuItems>
@@ -38,4 +29,14 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
 import { D9Icon } from "../index";
+import { withDefaults } from "vue";
+
+withDefaults(
+  defineProps<{
+    position: "left" | "right";
+  }>(),
+  {
+    position: "left",
+  }
+);
 </script>
