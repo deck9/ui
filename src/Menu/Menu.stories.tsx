@@ -3,7 +3,7 @@ import { D9Menu, D9Icon, D9MenuLink } from "../index";
 export default {
   title: "Basics/Menu",
   component: D9Menu,
-  decorators: [() => ({ template: '<div class="p-6 md:p-12"><story/></div>' })],
+  decorators: [() => ({ template: '<div class="px-12 md:px-24 py-32 "><story/></div>' })],
   argTypes: {
     position: {
       control: { type: "select", options: ["left", "right"] },
@@ -18,14 +18,11 @@ const Template = (args: Record<string, unknown>) => ({
   },
   render() {
     return (
-      <div>
-        <span class="text-blue-500 mr-2">Einstellungen</span>
-        <d9-menu class="text-blue-400" {...args}>
-          <d9-menu-link as="a" href="#" label="Account"></d9-menu-link>
-          <d9-menu-link as="a" href="#" label="System Settings"></d9-menu-link>
-          <d9-menu-link as="a" href="#" label="Logout"></d9-menu-link>
-        </d9-menu>
-      </div>
+      <d9-menu class="text-blue-400" {...args}>
+        <d9-menu-link as="a" href="#" label="Account"></d9-menu-link>
+        <d9-menu-link as="a" href="#" label="System Settings"></d9-menu-link>
+        <d9-menu-link as="a" href="#" label="Logout"></d9-menu-link>
+      </d9-menu>
     )
   }
 });
@@ -46,4 +43,10 @@ export const UsePortal: any = Template.bind({});
 UsePortal.args = {
   position: 'right',
   usePortal: true,
+};
+
+export const UsePortalWithCustomTarget: any = Template.bind({});
+UsePortalWithCustomTarget.args = {
+  position: 'right',
+  usePortal: '#root',
 };
