@@ -12,3 +12,12 @@ export const Default = (args: Record<string, unknown>) => ({
   },
   template: '<d9-label id="name" label="Your name" />',
 });
+
+export const WithDescription = (args: Record<string, unknown>) => ({
+  components: { D9Label },
+  setup() {
+    return { args };
+  },
+  template:
+    '<d9-label id="name" label="Your name" description="Please use your full name." />',
+});
