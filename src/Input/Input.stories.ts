@@ -56,3 +56,10 @@ WithIcon.args = {
   size: "medium",
   icon: "user",
 };
+
+export const AsBlock = Template.bind({});
+AsBlock.args = {
+  placeholder: "Your Input",
+  size: "medium",
+  block: true,
+};

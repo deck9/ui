@@ -4,6 +4,7 @@ export * from "./Icon/index";
 export * from "./Input/index";
 export * from "./Label/index";
 export * from "./Menu/index";
+export * from "./Select/index";
 export * from "./Switch/index";
 export * from "./Skeleton/index";
 export * from "./Spinner/index";
