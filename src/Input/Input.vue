@@ -51,7 +51,7 @@ import { useFormClasses } from "../utils/useFormClasses";
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string;
+    modelValue?: string | null;
     type: string;
     placeholder?: string;
     size?: Size;

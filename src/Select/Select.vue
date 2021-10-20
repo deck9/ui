@@ -152,11 +152,11 @@ interface SelectOption {
 
 const props = withDefaults(
   defineProps<{
+    modelValue?: SelectOption | null;
     size?: Size;
     icon?: string;
     placeholder?: string;
     isDisabled?: boolean;
-    modelValue?: SelectOption;
     options: Array<SelectOption>;
   }>(),
   {
@@ -173,6 +173,14 @@ const emit = defineEmits<{
 
 const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
+
+if (props.modelValue) {
+  watch(props.modelValue, (value) => {
+    if (value.id !== selected.value?.id) {
+      selected.value = value;
+    }
+  });
+}
 
 watch(selected, (value: SelectOption | null) => {
   if (value) {
