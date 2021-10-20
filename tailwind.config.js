@@ -8,6 +8,7 @@ module.exports = {
     content: [
       "./src/**/*.vue",
       "./src/**/*.mdx",
+      "./src/**/*.ts",
       "./src/**/*.stories.ts",
       "./src/**/*.stories.tsx",
     ],

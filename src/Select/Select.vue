@@ -174,13 +174,16 @@ const emit = defineEmits<{
 const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
 
-if (props.modelValue) {
-  watch(props.modelValue, (value) => {
+watch(
+  () => props.modelValue as SelectOption,
+  (value: SelectOption) => {
+    if (!value) return;
+
     if (value.id !== selected.value?.id) {
       selected.value = value;
     }
-  });
-}
+  }
+);
 
 watch(selected, (value: SelectOption | null) => {
   if (value) {
