@@ -1,15 +1,13 @@
 <template>
-  <MenuItem v-slot="{ active }">
+  <MenuItem v-slot="{ active }" v-bind="{ disabled }">
     <span
-      class="
-        block
-        px-4
-        py-2
-        text-xs
-        hover:bg-grey-200
-        focus:bg-grey-200 focus:outline-none
-      "
-      :class="active ? 'bg-grey-200' : ''"
+      class="block px-4 py-2 text-xs"
+      :class="[
+        active ? 'bg-grey-200' : '',
+        disabled
+          ? 'opacity-50 pointer-events-none'
+          : 'hover:bg-grey-200 focus:bg-grey-200 focus:outline-none',
+      ]"
       v-bind="$attrs"
       >{{ label }}</span
     >
@@ -21,5 +19,6 @@ import { MenuItem } from "@headlessui/vue";
 
 defineProps<{
   label?: string;
+  disabled?: boolean;
 }>();
 </script>
