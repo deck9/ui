@@ -114,9 +114,9 @@ const iconClasses = computed(() => {
   };
 
   const colors = {
-    "text-white": props.type === "primary",
-    "text-blue-600": props.type === "light",
-    "text-grey-50": props.type === "dark",
+    "text-white": props.color === "primary",
+    "text-blue-600": props.color === "light",
+    "text-grey-50": props.color === "dark",
   };
 
   return {
