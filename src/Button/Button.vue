@@ -1,6 +1,15 @@
 <template>
   <button
-    class="relative inline-flex items-center focus:outline-none focus:ring active:ring transition duration-150 ease-in-out"
+    class="
+      relative
+      inline-flex
+      items-center
+      focus:outline-none focus:ring
+      active:ring
+      transition
+      duration-150
+      ease-in-out
+    "
     type="button"
     :aria-label="label"
     :class="buttonClasses"
@@ -38,22 +47,22 @@ import { computed, withDefaults } from "vue";
 interface ButtonProps {
   label: string;
   size?: Size;
-  type?: ColorScheme;
+  color?: ColorScheme;
   isLoading?: boolean;
   isDisabled?: boolean;
   icon?: string;
   iconPosition?: PositionHorizontal;
-};
+}
 
 interface ButtonEmits {
   (e: "onClick"): void;
-};
+}
 
 const emit = defineEmits<ButtonEmits>();
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   size: "medium",
-  type: "primary",
+  color: "primary",
   iconPosition: "right",
   isLoading: false,
   isDisabled: false,
@@ -62,11 +71,11 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 const buttonClasses = computed(() => {
   const colors = {
     "text-white bg-blue-600 border-transparent hover:bg-blue-700 active:bg-blue-700 dark:ring-blue-800 ring-offset-2 dark:ring-offset-grey-900":
-      props.type === "primary",
+      props.color === "primary",
     "text-blue-600 bg-grey-100 border-transparent hover:bg-blue-100 hover:text-blue-700 active:bg-grey-100 ring-blue-300 ring-offset-2 dark:ring-offset-grey-900":
-      props.type === "light",
+      props.color === "light",
     "text-grey-50 bg-grey-700 border-transparent hover:bg-grey-800 active:bg-grey-700 ring-grey-500 dark:ring-grey-400 dark:ring-opacity-50 ring-offset-2 dark:ring-offset-grey-900":
-      props.type === "dark",
+      props.color === "dark",
   };
 
   const disabledClasses = {

@@ -111,9 +111,8 @@
                   selected ? 'font-semibold' : 'font-normal',
                   'block truncate',
                 ]"
+                >{{ item.label }}</span
               >
-                {{ item.label }}
-              </span>
 
               <span
                 v-if="selected"
