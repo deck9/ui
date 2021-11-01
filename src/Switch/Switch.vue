@@ -55,9 +55,11 @@ withDefaults(
 
 const emits = defineEmits<{
   (e: "update:modelValue", value: boolean): void;
+  (e: "change", value: boolean): void;
 }>();
 
 const update = (newValue: boolean) => {
   emits("update:modelValue", newValue);
+  emits("change", newValue);
 };
 </script>
