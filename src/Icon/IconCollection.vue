@@ -1,22 +1,13 @@
 <template>
-  <div class="grid grid-cols-6 gap-4 max-w-6xl mx-auto">
+  <div class="grid max-w-6xl grid-cols-6 gap-4 mx-auto">
     <div
       v-for="icon in icons"
       :key="icon"
-      class="
-        bg-grey-800
-        text-center
-        h-16
-        text-blue-50
-        flex
-        items-center
-        justify-center
-        rounded
-      "
+      class="flex items-center justify-center h-16 text-center rounded  bg-grey-800 text-blue-50"
     >
       <div>
         <icon v-bind="{ name: icon, size: '1x' }" />
-        <span class="block text-xs text-grey-400 mono-100 mt-2">{{
+        <span class="block mt-2 text-xs text-grey-400 mono-100">{{
           icon
         }}</span>
       </div>

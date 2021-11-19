@@ -1,5 +1,5 @@
 import { D9Icon } from "@/index";
-import { icons } from "@/index";
+import { icons, brands } from "@/index";
 
 export default {
   title: "Basics/Icon",
@@ -9,7 +9,7 @@ export default {
       control: { type: "select", options: ["xs", "1x", "2x", "3x", "4x"] },
     },
     name: {
-      control: { type: "select", options: icons },
+      control: { type: "select", options: [...icons, ...brands] },
     },
   },
   decorators: [

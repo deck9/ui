@@ -2,7 +2,7 @@
 
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import IconCollection from "./Icon/IconCollection.vue";
-import { icons } from "@/index";
+import { icons, brands } from "@/index";
 
 <Meta title="Reference/Icons Overview" />
 
@@ -13,7 +13,7 @@ This page gives an overview of all icons used in Deck9 UI.
 export const Primary = (args) => ({
     components: {IconCollection},
     setup() {
-      return {args, icons: icons};
+      return {args, icons: [...icons, ...brands]};
     },
     template: '<icon-collection v-bind="{icons}" />',
 });
