@@ -1,4 +1,5 @@
 import D9Switch from "./Switch.vue";
+import { Story } from "@storybook/vue3";
 import { ref } from "vue";
 
 export default {
@@ -6,7 +7,7 @@ export default {
   component: D9Switch,
 };
 
-const Template = (args: Record<string, unknown>) => ({
+const Template: Story = (args: Record<string, unknown>) => ({
   components: { D9Switch },
   setup() {
     const enabled = ref(args.modelValue ? true : false);
