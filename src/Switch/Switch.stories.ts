@@ -1,5 +1,4 @@
 import D9Switch from "./Switch.vue";
-import { Story } from "@storybook/vue3";
 import { ref } from "vue";
 
 export default {
@@ -7,7 +6,7 @@ export default {
   component: D9Switch,
 };
 
-const Template: Story = (args: Record<string, unknown>) => ({
+const Template = (args: Record<string, unknown>) => ({
   components: { D9Switch },
   setup() {
     const enabled = ref(args.modelValue ? true : false);
@@ -21,12 +20,16 @@ export const IsOff = Template.bind({});
 IsOff.args = {
   label: "Check me out",
   modelValue: false,
+  onLabel: "On",
+  offLabel: "Off",
 };
 
 export const IsOn = Template.bind({});
 IsOn.args = {
   label: "Check me out",
   modelValue: true,
+  onLabel: "On",
+  offLabel: "Off",
 };
 
 export const WithDifferentStateLabels = Template.bind({});

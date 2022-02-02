@@ -4,7 +4,7 @@
     :label="label"
     :class="modelValue ? 'bg-blue-700' : 'bg-grey-700'"
     @update:modelValue="update"
-    class="relative inline-flex items-center h-6 transition rounded-full  w-14 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-blue-300"
+    class="relative inline-flex items-center h-6 transition rounded-full w-14 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-blue-300"
   >
     <span
       class="absolute text-xs text-center text-white inset-x-2"
@@ -35,8 +35,8 @@ withDefaults(
   }>(),
   {
     id: uuidv4(),
-    onLabel: "on",
     offLabel: "off",
+    onLabel: "on",
   }
 );
 
