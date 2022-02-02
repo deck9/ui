@@ -6,24 +6,31 @@
       </slot>
     </MenuButton>
 
-    <teleport
-      :to="typeof usePortal === 'string' ? usePortal : 'body'"
-      :disabled="!usePortal"
-    >
-      <MenuItems
-        ref="container"
-        :class="[
-          {
-            'absolute left-0 origin-top-left':
-              !usePortal && position === 'right',
-            'absolute right-0 origin-top-right':
-              !usePortal && position === 'left',
-          },
-          'z-40 mt-1 py-1 bg-white w-56 rounded shadow-lg text-grey-700 focus:outline-none',
-        ]"
-      >
-        <slot></slot>
-      </MenuItems>
+    <teleport :to="typeof usePortal === 'string' ? usePortal : 'body'" :disabled="!usePortal">
+      <div ref="container" class="w-48">
+        <transition
+          enter-active-class="transition duration-200 ease-in-out"
+          enter-from-class="transform -translate-y-4 opacity-0"
+          enter-to-class="transform opacity-100"
+          leave-active-class="transition duration-100 ease-in-out"
+          leave-from-class="transform opacity-100"
+          leave-to-class="transform -translate-y-2 opacity-0"
+        >
+          <MenuItems
+            :class="[
+              {
+                'absolute left-0 origin-top-left':
+                  !usePortal && position === 'right',
+                'absolute right-0 origin-top-right':
+                  !usePortal && position === 'left',
+              },
+              'z-40 mt-1 p-1 bg-white rounded shadow-lg text-grey-700 focus:outline-none w-full',
+            ]"
+          >
+            <slot></slot>
+          </MenuItems>
+        </transition>
+      </div>
     </teleport>
   </Menu>
 </template>

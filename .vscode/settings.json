@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.js": "none",

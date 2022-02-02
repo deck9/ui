@@ -1,7 +1,7 @@
 <template>
   <MenuItem v-slot="{ active }" v-bind="{ disabled }">
     <span
-      class="block px-4 py-2 text-xs"
+      class="block px-4 py-2 text-xs transition-colors duration-100 rounded-md"
       :class="[
         active ? 'bg-grey-200' : '',
         disabled
