@@ -1,20 +1,20 @@
 <template>
   <div class="animate-pulse">
     <div class="flex items-center justify-between space-x-4">
-      <div v-if="avatar" class="h-12 w-12 bg-current rounded-full flex-shrink-0"></div>
-      <div v-if="title" class="bg-current h-8 w-full rounded-lg"></div>
+      <div v-if="avatar" class="w-12 h-12 bg-current rounded-full shrink-0"></div>
+      <div v-if="title" class="w-full h-8 bg-current rounded-lg"></div>
     </div>
 
-    <div v-if="lines > 0" class="space-y-2 mt-6">
+    <div v-if="lines > 0" class="mt-6 space-y-2">
       <div
         v-for="(setting, index) in lineSettings"
-        class="bg-current h-4 rounded-lg"
+        class="h-4 bg-current rounded-lg"
         :class="setting.margin"
         :key="index"
       ></div>
     </div>
 
-    <div v-if="footer" class="mt-6 bg-current h-10 rounded-lg w-1/3"></div>
+    <div v-if="footer" class="w-1/3 h-10 mt-6 bg-current rounded-lg"></div>
   </div>
 </template>
 

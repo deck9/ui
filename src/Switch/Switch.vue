@@ -9,12 +9,11 @@
     <span
       class="absolute text-xs text-center text-white inset-x-2"
       :class="modelValue ? 'pr-3' : 'pl-3'"
-      >{{ modelValue === true ? onLabel : offLabel }}</span
-    >
+    >{{ modelValue === true ? onLabel : offLabel }}</span>
     <span class="sr-only">{{ label }}</span>
     <span
       :class="modelValue ? 'translate-x-9' : 'translate-x-1'"
-      class="inline-block w-4 h-4 transition transform bg-white rounded-full"
+      class="inline-block w-4 h-4 transition bg-white rounded-full"
     />
   </Switch>
 </template>

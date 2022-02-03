@@ -3,24 +3,24 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  mode: "jit",
-  purge: {
-    content: [
-      "./src/**/*.vue",
-      "./src/**/*.mdx",
-      "./src/**/*.ts",
-      "./src/**/*.stories.ts",
-      "./src/**/*.stories.tsx",
-    ],
-    whitelistPatterns: [/svg.*/, /fa.*/],
-  },
+  content: [
+    "./src/**/*.{vue,ts,mdx}",
+    "./src/**/*.stories.{ts,tsx}",
+  ],
+
+  safelist: [
+    { pattern: /svg.*/ },
+    { pattern: /fa.*/ }
+  ],
+
   darkMode: "class",
+
   theme: {
     extend: {
       colors: {
         black: "#050505",
         white: "#ffffff",
-        grey: colors.blueGray,
+        grey: colors.slate,
         red: colors.red,
         yellow: colors.yellow,
         blue: colors.blue,
