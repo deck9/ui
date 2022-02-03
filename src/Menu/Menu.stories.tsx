@@ -20,6 +20,7 @@ const Template = (args: Record<string, unknown>) => ({
     return (
       <d9-menu class="text-blue-400" {...args}>
         <d9-menu-link as="a" href="#" label="Account"></d9-menu-link>
+        <d9-menu-link as="a" href="#" label="Notifications" meta="34"></d9-menu-link>
         <d9-menu-link as="a" href="#" label="System Settings"></d9-menu-link>
         <d9-menu-link as="a" href="#" label="Logout"></d9-menu-link>
       </d9-menu>

@@ -7,7 +7,7 @@
     </MenuButton>
 
     <teleport :to="typeof usePortal === 'string' ? usePortal : 'body'" :disabled="!usePortal">
-      <div ref="container" class="w-48">
+      <div ref="container" class="w-56">
         <transition
           enter-active-class="transition duration-200 ease-in-out"
           enter-from-class="transform -translate-y-4 opacity-0"
