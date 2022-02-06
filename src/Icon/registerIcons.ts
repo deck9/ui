@@ -3,6 +3,9 @@ import * as fasIcons from "@fortawesome/free-solid-svg-icons";
 import * as fabIcon from "@fortawesome/free-brands-svg-icons";
 
 library.add(
+  fasIcons.faBold,
+  fasIcons.faItalic,
+  fasIcons.faLink,
   fasIcons.faChartPie,
   fasIcons.faCheck,
   fasIcons.faCheckCircle,
