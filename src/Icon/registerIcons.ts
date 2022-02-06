@@ -4,8 +4,6 @@ import * as fabIcon from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   fasIcons.faBold,
-  fasIcons.faItalic,
-  fasIcons.faLink,
   fasIcons.faChartPie,
   fasIcons.faCheck,
   fasIcons.faCheckCircle,
@@ -24,6 +22,9 @@ library.add(
   fasIcons.faGlobe,
   fasIcons.faHandPointRight,
   fasIcons.faInfoCircle,
+  fasIcons.faItalic,
+  fasIcons.faLink,
+  fasIcons.faMedal,
   fasIcons.faPencilAlt,
   fasIcons.faPlayCircle,
   fasIcons.faPlus,
@@ -33,6 +34,7 @@ library.add(
   fasIcons.faShieldAlt,
   fasIcons.faTimes,
   fasIcons.faTrash,
+  fasIcons.faTrophy,
   fasIcons.faUser,
   fasIcons.faUserShield,
 
