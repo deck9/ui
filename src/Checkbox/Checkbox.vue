@@ -22,12 +22,12 @@
     <div class="ml-2 text-sm leading-5">
       <label
         :for="id"
-        class="font-medium text-grey-900 dark:text-grey-200 casual-25"
+        class="font-medium text-grey-700 dark:text-grey-200 casual-25"
         >{{ label }}</label
       >
       <p
         v-if="description"
-        class="text-grey-700 dark:text-grey-400 mono-0 casual-60"
+        class="block text-xs text-grey-400 font-normal mono-0 casual-60"
       >
         {{ description }}
       </p>
