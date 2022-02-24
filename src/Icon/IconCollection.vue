@@ -26,15 +26,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Icon from "./Icon.vue";
 
-export default {
-  name: "icon-collection",
-
-  components: { Icon },
-  props: {
-    icons: { type: Array, required: true },
-  },
-};
+defineProps<{
+  icons: Array<string>;
+}>();
 </script>
