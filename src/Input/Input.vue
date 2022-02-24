@@ -20,6 +20,7 @@
       :type="type"
       :tabindex="isDisabled ? '-1' : undefined"
       :value="modelValue"
+      v-bind="$attrs"
       @input="onInput"
     />
 
@@ -42,6 +43,12 @@
     </span>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
 
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
