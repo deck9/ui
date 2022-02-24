@@ -1,11 +1,10 @@
-import { D9Select } from "@/index";
-import { icons } from "@/index";
+import { D9Select } from "../index";
+import { icons } from "../index";
 
 export default {
   title: "Forms/Select",
   component: D9Select,
   argTypes: {
-    type: { control: { type: "inline-radio" }, options: ["text", "password"] },
     size: {
       control: { type: "inline-radio" },
       options: ["small", "medium", "large"],
@@ -24,7 +23,7 @@ const people = [
   { id: 7, value: 7, label: "Caroline Schultz" },
   { id: 8, value: 8, label: "Mason Heaney" },
   { id: 9, value: 9, label: "Claudie Smitham" },
-  { id: 10, value: 10, label: "Emil Schaefer" },
+  { id: 10, value: 10, label: "Emil Schaefer", icon: "envelope" },
 ];
 
 const Template = (args) => ({

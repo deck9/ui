@@ -3,7 +3,7 @@
     <input
       class="
         mono-50
-        bg-grey-50
+        bg-white
         text-grey-800
         placeholder-grey-600
         border-grey-300

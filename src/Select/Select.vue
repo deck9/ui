@@ -5,7 +5,7 @@
         class="
           w-full
           mono-50
-          bg-grey-50
+          bg-white
           text-grey-800
           placeholder-grey-600
           border border-grey-300
@@ -39,12 +39,11 @@
             px-4
             pointer-events-none
           "
-          :class="textSizeClasses"
         >
-          <D9Icon :name="icon" />
+          <D9Icon :name="selected?.icon ?? icon" />
         </span>
         <span v-if="selected" class="block truncate">{{ selected.label }}</span>
-        <span class="text-grey-500" v-else>{{ placeholder }}</span>
+        <span class="text-grey-500 truncate" v-else>{{ placeholder }}</span>
         <span
           class="
             absolute
@@ -111,7 +110,13 @@
                   selected ? 'font-semibold' : 'font-normal',
                   'block truncate',
                 ]"
-                >{{ item.label }}</span
+              >
+                <D9Icon
+                  class="inline-block mr-1"
+                  v-if="item.icon"
+                  :name="item.icon"
+                />
+                {{ item.label }}</span
               >
 
               <span
@@ -147,6 +152,7 @@ interface SelectOption {
   [key: string]: unknown;
   id: string | number;
   label: string | number;
+  icon?: string;
 }
 
 const props = withDefaults(
