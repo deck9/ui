@@ -3,19 +3,30 @@
     <div
       v-for="icon in icons"
       :key="icon"
-      class="flex items-center justify-center h-16 text-center rounded  bg-grey-800 text-blue-50"
+      class="
+        flex
+        items-center
+        justify-center
+        h-24
+        text-center
+        rounded
+        bg-grey-200
+        text-grey-600
+        dark:bg-grey-800 dark:text-blue-50
+      "
     >
       <div>
-        <icon v-bind="{ name: icon, size: '1x' }" />
-        <span class="block mt-2 text-xs text-grey-400 mono-100">{{
-          icon
-        }}</span>
+        <icon v-bind="{ name: icon, size: '2x' }" />
+        <span
+          class="block mt-2 text-xs text-grey-700 dark:text-grey-400 mono-100"
+          >{{ icon }}</span
+        >
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Icon from "./Icon.vue";
 
 export default {
