@@ -5,11 +5,11 @@
         mono-50
         bg-white
         text-grey-800
-        placeholder-grey-600
+        placeholder:text-grey-400 placeholder:font-normal
         border-grey-300
         dark:bg-grey-800
         dark:text-grey-100
-        dark:placeholder-grey-400
+        dark:placeholder:text-grey-500
         dark:border-grey-700
         focus:border-blue-400 focus:ring-blue-400
         dark:focus:border-blue-800 dark:focus:ring-blue-800
@@ -21,6 +21,7 @@
       :tabindex="isDisabled ? '-1' : undefined"
       :value="modelValue"
       v-bind="$attrs"
+      ref="input"
       @input="onInput"
     />
 
@@ -53,7 +54,7 @@ export default {
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
 import { Size } from "../types";
-import { InputHTMLAttributes, withDefaults } from "vue";
+import { InputHTMLAttributes, Ref, ref, withDefaults } from "vue";
 import { useFormClasses } from "../utils/useFormClasses";
 
 const props = withDefaults(
@@ -83,4 +84,16 @@ const { inputClasses, disabledClasses, textSizeClasses } =
 const onInput = function (payload: Event): void {
   emit("update:modelValue", (payload?.target as InputHTMLAttributes).value);
 };
+
+const input = ref(null) as unknown as Ref<HTMLInputElement>;
+
+const focus = (): void => {
+  if (!props.isDisabled) {
+    input.value.focus();
+  }
+};
+
+defineExpose({
+  focus,
+});
 </script>

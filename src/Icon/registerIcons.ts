@@ -41,6 +41,8 @@ library.add(
   fasIcons.faPlayCircle,
   fasIcons.faPlus,
   fasIcons.faPlusCircle,
+  fasIcons.faReply,
+  fasIcons.faReplyAll,
   fasIcons.faRobot,
   fasIcons.faSave,
   fasIcons.faShield,
