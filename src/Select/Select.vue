@@ -100,8 +100,8 @@
             <li
               :class="[
                 active
-                  ? 'text-white bg-grey-800'
-                  : 'text-gray-900 dark:text-grey-50',
+                  ? 'text-white bg-blue-500'
+                  : 'text-grey-900 dark:text-grey-50',
                 'cursor-default select-none relative py-2 pl-3 pr-9',
               ]"
             >
