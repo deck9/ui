@@ -52,6 +52,7 @@ library.add(
   fasIcons.faTimes,
   fasIcons.faTrash,
   fasIcons.faTrophy,
+  fasIcons.faTurnDown,
   fasIcons.faUpload,
   fasIcons.faUser,
   fasIcons.faUserShield,
