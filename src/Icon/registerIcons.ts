@@ -23,6 +23,7 @@ library.add(
   fasIcons.faEllipsisVertical,
   fasIcons.faEnvelope,
   fasIcons.faExclamationTriangle,
+  fasIcons.faEyeDropper,
   fasIcons.faFileLines,
   fasIcons.faFileUpload,
   fasIcons.faFingerprint,
