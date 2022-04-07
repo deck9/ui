@@ -17,7 +17,7 @@
       "
       :class="[inputClasses, textSizeClasses, disabledClasses]"
       :tabindex="isDisabled ? '-1' : undefined"
-      :value="modelValue"
+      :value="modelValue ?? ''"
       v-bind="$attrs"
       ref="input"
       cols="56"
