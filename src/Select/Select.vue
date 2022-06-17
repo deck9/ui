@@ -170,7 +170,7 @@ const props = withDefaults(
   }
 );
 
-const selected = props.modelValue ? ref(props.modelValue) : ref(null);
+const selected = props.modelValue ? ref(props.modelValue) : ref(undefined);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: SelectOption): void;
@@ -190,7 +190,7 @@ watch(
   }
 );
 
-watch(selected, (value: SelectOption | null) => {
+watch(selected, (value?: SelectOption) => {
   if (value) {
     emit("update:modelValue", value);
   }
