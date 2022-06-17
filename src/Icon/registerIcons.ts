@@ -39,6 +39,7 @@ library.add(
   fasIcons.faItalic,
   fasIcons.faLink,
   fasIcons.faMedal,
+  fasIcons.faMessage,
   fasIcons.faPencilAlt,
   fasIcons.faPenToSquare,
   fasIcons.faPhone,
