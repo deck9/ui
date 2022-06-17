@@ -1,6 +1,6 @@
 {
   "name": "@deck9/ui",
-  "version": "0.10.1",
+  "version": "0.10.3",
   "description": "The UI components used in deck9 software applications.",
   "author": "Philipp Reinking <philipp@deck9.co> (https://deck9.co)",
   "scripts": {
