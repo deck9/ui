@@ -76,6 +76,8 @@ const buttonClasses = computed(() => {
       props.color === "light",
     "text-grey-50 bg-grey-700 border-transparent hover:bg-grey-800 active:bg-grey-700 ring-grey-500 dark:ring-grey-400 dark:ring-opacity-50 ring-offset-2 dark:ring-offset-grey-900":
       props.color === "dark",
+    "text-red-50 bg-red-500 border-transparent hover:bg-red-600 active:bg-red-600 ring-red-400 dark:ring-red-400 dark:ring-opacity-50 ring-offset-2 dark:ring-offset-red-900":
+      props.color === "danger",
   };
 
   const disabledClasses = {

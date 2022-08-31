@@ -1,4 +1,4 @@
-export type ColorScheme = "light" | "dark" | "primary";
+export type ColorScheme = "light" | "dark" | "primary" | "danger";
 
 export type Size = "small" | "medium" | "large";
 

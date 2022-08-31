@@ -6,7 +6,10 @@ export default {
   component: D9Button,
   argTypes: {
     color: {
-      control: { type: "select", options: ["primary", "light", "dark"] },
+      control: {
+        type: "select",
+        options: ["primary", "light", "dark", "danger"],
+      },
     },
     size: {
       control: { type: "select", options: ["small", "medium", "large"] },
