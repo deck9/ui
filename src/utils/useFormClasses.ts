@@ -13,7 +13,7 @@ export function useFormClasses(props: InputProps): {
 } {
   const inputClasses = computed(() => {
     return {
-      "pl-3 pr-10 py-1": !props.icon && props.size === "small",
+      "pl-3 pr-10 py-2": !props.icon && props.size === "small",
       "pl-4 pr-10 py-3": !props.icon && props.size === "medium",
       "pl-6 pr-10 py-3": !props.icon && props.size === "large",
 

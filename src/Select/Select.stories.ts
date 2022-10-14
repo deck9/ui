@@ -20,9 +20,9 @@ const people = [
   { id: 4, value: 4, label: "Tom Cook" },
   { id: 5, value: 5, label: "Tanya Fox" },
   { id: 6, value: 6, label: "Hellen Schmidt" },
-  { id: 7, value: 7, label: "Caroline Schultz" },
+  { id: 7, value: 7, label: "Caroline Schultz", disabled: true },
   { id: 8, value: 8, label: "Mason Heaney" },
-  { id: 9, value: 9, label: "Claudie Smitham" },
+  { id: 9, value: 9, label: "Claudie Smitham-Honey", disabled: true },
   { id: 10, value: 10, label: "Emil Schaefer", icon: "envelope" },
 ];
 
@@ -58,6 +58,12 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   placeholder: "Please select...",
   isDisabled: true,
+};
+
+export const DisabledItemWithBadge = Template.bind({});
+DisabledItemWithBadge.args = {
+  placeholder: "Please select...",
+  disabledBadge: "Planned!",
 };
 
 export const WithIcon = Template.bind({});

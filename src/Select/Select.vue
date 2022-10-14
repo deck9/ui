@@ -95,6 +95,7 @@
             v-for="item in options"
             :key="item.id"
             :value="item"
+            :disabled="item.disabled"
             v-slot="{ active, selected }"
           >
             <li
@@ -102,9 +103,17 @@
                 active
                   ? 'text-white bg-blue-500'
                   : 'text-grey-900 dark:text-grey-50',
-                'cursor-default select-none relative py-2 pl-3 pr-9',
+                'cursor-default select-none relative py-2 pl-3 pr-12',
+                { 'opacity-50 bg-grey-100': item.disabled },
               ]"
             >
+              <div class="absolute right-2 inset-y-0 flex items-center">
+                <span
+                  v-if="item.disabled && disabledBadge"
+                  class="bg-grey-500 text-grey-100 rounded text-xs px-2 py-1"
+                  >{{ disabledBadge }}</span
+                >
+              </div>
               <span
                 :class="[
                   selected ? 'font-semibold' : 'font-normal',
@@ -153,6 +162,7 @@ interface SelectOption {
   id: string | number;
   label: string | number;
   icon?: string;
+  disabled?: boolean;
 }
 
 const props = withDefaults(
@@ -163,6 +173,7 @@ const props = withDefaults(
     placeholder?: string;
     isDisabled?: boolean;
     options: Array<SelectOption>;
+    disabledBadge?: string;
   }>(),
   {
     size: "medium",
