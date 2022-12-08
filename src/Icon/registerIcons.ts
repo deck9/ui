@@ -4,6 +4,7 @@ import * as fabIcon from "@fortawesome/free-brands-svg-icons";
 import numericInput from "./custom/numeric-input.js";
 
 library.add(
+  fasIcons.faArrowUp19,
   fasIcons.faAt,
   fasIcons.faBold,
   fasIcons.faBolt,
