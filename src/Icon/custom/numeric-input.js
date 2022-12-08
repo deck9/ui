@@ -1,5 +1,7 @@
 'use strict';
+let exports = module.exports = {};
 Object.defineProperty(exports, '__esModule', { value: true });
+
 var prefix = 'fas';
 var iconName = 'numeric-input';
 var width = 512;
