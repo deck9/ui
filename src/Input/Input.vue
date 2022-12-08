@@ -1,7 +1,8 @@
 <template>
-  <div class="relative">
+  <div class="relative" :class="[block ? 'w-full block' : 'inline-block']">
     <input
       class="
+        relative
         mono-50
         bg-white
         text-grey-800
@@ -17,16 +18,52 @@
       "
       :class="[inputClasses, textSizeClasses, disabledClasses]"
       :placeholder="placeholder"
-      :type="type"
+      :type="resolvedInputType"
       :tabindex="isDisabled ? '-1' : undefined"
-      :value="modelValue"
+      :value="localValue"
       v-bind="$attrs"
       ref="input"
       @input="onInput"
     />
 
+    <template v-if="type === 'color'">
+      <label class="absolute inset-y-2 left-2 w-8 cursor-pointer">
+        <input class="invisible" type="color" v-model="localValue" />
+        <span
+          class="
+            border-1
+            absolute
+            inset-0
+            block
+            rounded
+            border border-grey-600/25
+            bg-clip-border
+            shadow
+          "
+          :style="`background-color: ${localValue}`"
+        ></span>
+      </label>
+
+      <button
+        v-if="isColorPickerSupported && showColorPicker"
+        type="button"
+        class="
+          absolute
+          inset-y-2
+          right-2
+          h-7
+          w-7
+          rounded-full
+          hover:bg-grey-200
+        "
+        @click="openPicker"
+      >
+        <D9Icon size="xs" name="eyedropper" />
+      </button>
+    </template>
+
     <span
-      v-if="icon"
+      v-else-if="icon"
       class="
         absolute
         left-0
@@ -54,7 +91,15 @@ export default {
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
 import { Size } from "../types";
-import { InputHTMLAttributes, Ref, ref, withDefaults } from "vue";
+import {
+  computed,
+  InputHTMLAttributes,
+  Ref,
+  ref,
+  watch,
+  withDefaults,
+} from "vue";
+import { useEyeDropper } from "@vueuse/core";
 import { useFormClasses } from "../utils/useFormClasses";
 
 const props = withDefaults(
@@ -66,6 +111,7 @@ const props = withDefaults(
     icon?: string;
     isDisabled?: boolean;
     block?: boolean;
+    showColorPicker?: boolean;
   }>(),
   {
     type: "text",
@@ -74,6 +120,8 @@ const props = withDefaults(
   }
 );
 
+const localValue = ref(props.modelValue ?? "");
+
 const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
 }>();
@@ -81,7 +129,31 @@ const emit = defineEmits<{
 const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
 
+const resolvedInputType = computed(() => {
+  if (props.type === "color") {
+    return "text";
+  }
+
+  return props.type;
+});
+
+const {
+  isSupported: isColorPickerSupported,
+  open: openColorPicker,
+  sRGBHex,
+} = useEyeDropper();
+
+const openPicker = () => {
+  openColorPicker();
+};
+
+watch(sRGBHex, (value) => {
+  localValue.value = value;
+  emit("update:modelValue", value);
+});
+
 const onInput = function (payload: Event): void {
+  localValue.value = (payload?.target as InputHTMLAttributes).value;
   emit("update:modelValue", (payload?.target as InputHTMLAttributes).value);
 };
 

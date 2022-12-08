@@ -7,12 +7,18 @@ export default {
   title: "Forms/Input",
   component: D9Input,
   argTypes: {
-    type: { control: { type: "inline-radio" }, options: ["text", "password"] },
+    type: {
+      control: { type: "inline-radio" },
+      options: ["text", "password", "color", "number", "email", "tel", "url"],
+    },
     size: {
       control: { type: "inline-radio" },
       options: ["small", "medium", "large"],
     },
     icon: { control: { type: "select" }, options: icons },
+    modelValue: { control: { type: "text" } },
+    isDisabled: { control: { type: "boolean" }, defaultValue: false },
+    block: { control: { type: "boolean" }, defaultValue: false },
   },
 };
 
@@ -62,4 +68,12 @@ AsBlock.args = {
   placeholder: "Your Input",
   size: "medium",
   block: true,
+};
+
+export const ColorInput = Template.bind({});
+ColorInput.args = {
+  placeholder: "Your Input",
+  size: "medium",
+  type: "color",
+  showColorPicker: true,
 };

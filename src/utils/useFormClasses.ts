@@ -6,6 +6,7 @@ interface InputProps {
   icon?: string;
   isDisabled?: boolean;
   block?: boolean;
+  type?: string;
 }
 
 export function useFormClasses(props: InputProps): {
@@ -17,9 +18,11 @@ export function useFormClasses(props: InputProps): {
       "pl-4 pr-10 py-3": !props.icon && props.size === "medium",
       "pl-6 pr-10 py-3": !props.icon && props.size === "large",
 
-      "pl-10 pr-10 py-1": props.icon && props.size === "small",
+      "pl-10 pr-10 py-1":
+        (props.icon || props.type === "color") && props.size === "small",
       "pl-12 pr-10 py-3":
-        props.icon && (props.size === "medium" || props.size === "large"),
+        (props.icon || props.type === "color") &&
+        (props.size === "medium" || props.size === "large"),
 
       "w-full block": props.block === true,
     };
