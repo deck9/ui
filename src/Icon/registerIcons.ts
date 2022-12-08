@@ -1,6 +1,8 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import * as fasIcons from "@fortawesome/free-solid-svg-icons";
 import * as fabIcon from "@fortawesome/free-brands-svg-icons";
+import * as numericInput from "./custom/numeric-input.js";
+
 
 library.add(
   fasIcons.faAt,
@@ -72,7 +74,10 @@ library.add(
   fabIcon.faInstagram,
   fabIcon.faGithub,
   fabIcon.faLinkedin,
-  fabIcon.faFacebook
+  fabIcon.faFacebook,
+
+  // Custom
+  numericInput.definition
 );
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
