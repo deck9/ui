@@ -1,8 +1,7 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import * as fasIcons from "@fortawesome/free-solid-svg-icons";
 import * as fabIcon from "@fortawesome/free-brands-svg-icons";
-import * as numericInput from "./custom/numeric-input.js";
-
+import numericInput from "./custom/numeric-input.js";
 
 library.add(
   fasIcons.faAt,
