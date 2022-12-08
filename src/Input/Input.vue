@@ -28,7 +28,12 @@
 
     <template v-if="type === 'color'">
       <label class="absolute inset-y-2 left-2 w-8 cursor-pointer">
-        <input class="invisible" type="color" v-model="localValue" />
+        <input
+          class="invisible"
+          type="color"
+          v-model="localValue"
+          @input="onInput"
+        />
         <span
           class="
             border-1
