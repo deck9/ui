@@ -57,6 +57,7 @@ library.add(
   fasIcons.faRobot,
   fasIcons.faSave,
   fasIcons.faShield,
+  fasIcons.faSignal,
   fasIcons.faSignature,
   fasIcons.faSquareCheck,
   fasIcons.faStar,
