@@ -106,6 +106,7 @@ import {
 } from "vue";
 import { useEyeDropper } from "@vueuse/core";
 import { useFormClasses } from "../utils/useFormClasses";
+import { valueToNode } from "@babel/types";
 
 const props = withDefaults(
   defineProps<{
@@ -126,6 +127,15 @@ const props = withDefaults(
 );
 
 const localValue = ref(props.modelValue ?? "");
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    if (typeof newValue === "string" && newValue !== localValue.value) {
+      localValue.value = newValue;
+    }
+  }
+);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;

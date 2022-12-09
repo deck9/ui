@@ -10,6 +10,7 @@ export default {
     type: {
       control: { type: "inline-radio" },
       options: ["text", "password", "color", "number", "email", "tel", "url"],
+      defaultValue: "text",
     },
     size: {
       control: { type: "inline-radio" },
@@ -24,13 +25,16 @@ export default {
 
 const Template = (args) => ({
   setup() {
+    const model = ref("");
+
     return {
       args,
+      model,
       uid: ref(uuidv4()),
     };
   },
   components: { D9Input },
-  template: `<div><d9-input v-bind="args" /></div>`,
+  template: `<div><input type="text" v-model="model" /><br><d9-input v-bind="args" v-model="model" /></div>`,
 });
 
 export const Default = Template.bind({});
