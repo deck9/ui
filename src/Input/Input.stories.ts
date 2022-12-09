@@ -25,16 +25,13 @@ export default {
 
 const Template = (args) => ({
   setup() {
-    const model = ref("");
-
     return {
       args,
-      model,
       uid: ref(uuidv4()),
     };
   },
   components: { D9Input },
-  template: `<div><input type="text" v-model="model" /><br><d9-input v-bind="args" v-model="model" /></div>`,
+  template: `<div><d9-input v-bind="args" /></div>`,
 });
 
 export const Default = Template.bind({});
