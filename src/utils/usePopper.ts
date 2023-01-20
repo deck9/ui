@@ -1,5 +1,5 @@
 import { ref, onMounted, watchEffect, Ref, VNode } from "vue";
-import { createPopper, Options } from "@popperjs/core/lib/popper-lite.js";
+import { createPopper } from "@popperjs/core/lib/popper-lite.js";
 
 export function usePopper(options?: any): [Ref<VNode>, Ref<VNode>] {
   const reference = ref(null) as unknown as Ref<VNode>;

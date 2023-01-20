@@ -1,13 +1,16 @@
 <template>
-  <Menu as="div" class="relative inline-block text-left">
+  <Menu as="div" class="relative inline-block text-left" v-slot="{ open }">
     <MenuButton class="focus:outline-none" ref="button">
       <slot name="button">
         <D9Icon class="fill-current" name="ellipsis-h" />
       </slot>
     </MenuButton>
 
-    <teleport :to="typeof usePortal === 'string' ? usePortal : 'body'" :disabled="!usePortal">
-      <div ref="container" class="w-56">
+    <teleport
+      :to="typeof usePortal === 'string' ? usePortal : 'body'"
+      :disabled="!usePortal"
+    >
+      <div ref="container" class="w-56" :class="open ? 'mt-' : 'mt-px'">
         <transition
           enter-active-class="transition duration-200 ease-in-out"
           enter-from-class="transform -translate-y-4 opacity-0"
