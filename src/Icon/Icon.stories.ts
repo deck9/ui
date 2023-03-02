@@ -15,7 +15,7 @@ export default {
   decorators: [
     () => ({
       template:
-        '<div class="px-8 py-4 inline-block text-grey-50"><story/></div>',
+        '<div class="px-8 py-4 inline-block text-grey-500"><story/></div>',
     }),
   ],
 };
