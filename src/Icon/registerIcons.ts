@@ -52,6 +52,7 @@ library.add(
   fasIcons.faPlus,
   fasIcons.faPlusCircle,
   fasIcons.faPoo,
+  fasIcons.faPuzzlePiece,
   fasIcons.faReply,
   fasIcons.faReplyAll,
   fasIcons.faRobot,
