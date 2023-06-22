@@ -43,6 +43,8 @@ library.add(
   fasIcons.faInfoCircle,
   fasIcons.faItalic,
   fasIcons.faLink,
+  fasIcons.faLock,
+  fasIcons.faLockOpen,
   fasIcons.faMedal,
   fasIcons.faMessage,
   fasIcons.faPencilAlt,
