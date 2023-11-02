@@ -33,6 +33,7 @@ library.add(
   fasIcons.faEyeDropper,
   fasIcons.faFileLines,
   fasIcons.faFileUpload,
+  fasIcons.faFilter,
   fasIcons.faFingerprint,
   fasIcons.faGlobe,
   fasIcons.faGripHorizontal,
