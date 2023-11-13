@@ -1,21 +1,7 @@
 <template>
   <div class="relative" :class="[block ? 'w-full block' : 'inline-block']">
     <input
-      class="
-        relative
-        mono-50
-        bg-white
-        text-grey-800
-        placeholder:text-grey-400 placeholder:font-normal
-        border-grey-300
-        dark:bg-grey-800
-        dark:text-grey-100
-        dark:placeholder:text-grey-500
-        dark:border-grey-700
-        focus:border-blue-400 focus:ring-blue-400
-        dark:focus:border-blue-800 dark:focus:ring-blue-800
-        rounded
-      "
+      class="relative mono-50 bg-white text-grey-800 placeholder:text-grey-400 placeholder:font-normal border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder:text-grey-500 dark:border-grey-700 focus:border-blue-400 focus:ring-blue-400 dark:focus:border-blue-800 dark:focus:ring-blue-800 rounded"
       :class="[inputClasses, textSizeClasses, disabledClasses]"
       :placeholder="placeholder"
       :type="resolvedInputType"
@@ -35,16 +21,7 @@
           @input="onInput"
         />
         <span
-          class="
-            border-1
-            absolute
-            inset-0
-            block
-            rounded
-            border border-grey-600/25
-            bg-clip-border
-            shadow
-          "
+          class="border-1 absolute inset-0 block rounded border border-grey-600/25 bg-clip-border shadow"
           :style="`background-color: ${localValue}`"
         ></span>
       </label>
@@ -52,15 +29,7 @@
       <button
         v-if="isColorPickerSupported && showColorPicker"
         type="button"
-        class="
-          absolute
-          inset-y-2
-          right-2
-          h-7
-          w-7
-          rounded-full
-          hover:bg-grey-200
-        "
+        class="absolute inset-y-2 right-2 h-7 w-7 rounded-full hover:bg-grey-200"
         @click="openPicker"
       >
         <D9Icon size="xs" name="eyedropper" />
@@ -69,17 +38,7 @@
 
     <span
       v-else-if="icon"
-      class="
-        absolute
-        left-0
-        inset-y-0
-        inline-flex
-        items-center
-        justify-center
-        text-grey-700
-        dark:text-grey-100
-        px-4
-      "
+      class="absolute left-0 inset-y-0 inline-flex items-center justify-center text-grey-700 dark:text-grey-100 px-4"
       :class="textSizeClasses"
     >
       <D9Icon :name="icon" />
@@ -95,7 +54,6 @@ export default {
 
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
-import { Size } from "../types";
 import {
   computed,
   InputHTMLAttributes,
@@ -107,6 +65,7 @@ import {
 import { useEyeDropper } from "@vueuse/core";
 import { useFormClasses } from "../utils/useFormClasses";
 import { valueToNode } from "@babel/types";
+import { Size } from "../types/types";
 
 const props = withDefaults(
   defineProps<{

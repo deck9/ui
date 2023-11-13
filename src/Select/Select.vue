@@ -2,61 +2,19 @@
   <Listbox as="div" v-model="selected" :disabled="isDisabled">
     <div class="relative">
       <ListboxButton
-        class="
-          w-full
-          mono-50
-          bg-white
-          text-grey-800
-          placeholder-grey-600
-          border border-grey-300
-          dark:bg-grey-800
-          dark:text-grey-100
-          dark:placeholder-grey-400
-          dark:border-grey-700
-          focus:ring-2
-          focus:border-blue-400
-          focus:ring-blue-400
-          focus:outline-none
-          dark:focus:border-blue-800 dark:focus:ring-blue-800
-          cursor-default
-          rounded
-          font-normal
-          text-left
-        "
+        class="w-full mono-50 bg-white text-grey-800 placeholder-grey-600 border border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:ring-2 focus:border-blue-400 focus:ring-blue-400 focus:outline-none dark:focus:border-blue-800 dark:focus:ring-blue-800 cursor-default rounded font-normal text-left"
         :class="[inputClasses, textSizeClasses, disabledClasses]"
       >
         <span
           v-if="icon"
-          class="
-            absolute
-            left-0
-            inset-y-0
-            inline-flex
-            items-center
-            justify-center
-            text-grey-700
-            dark:text-grey-100
-            px-4
-            pointer-events-none
-          "
+          class="absolute left-0 inset-y-0 inline-flex items-center justify-center text-grey-700 dark:text-grey-100 px-4 pointer-events-none"
         >
           <D9Icon :name="selected?.icon ?? icon" />
         </span>
         <span v-if="selected" class="block truncate">{{ selected.label }}</span>
         <span class="text-grey-500 truncate" v-else>{{ placeholder }}</span>
         <span
-          class="
-            absolute
-            right-0
-            inset-y-0
-            inline-flex
-            items-center
-            justify-center
-            text-grey-700
-            dark:text-grey-100
-            px-4
-            pointer-events-none
-          "
+          class="absolute right-0 inset-y-0 inline-flex items-center justify-center text-grey-700 dark:text-grey-100 px-4 pointer-events-none"
         >
           <D9Icon
             class="text-grey-400"
@@ -72,23 +30,7 @@
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="
-            absolute
-            z-10
-            mt-1
-            w-full
-            bg-white
-            dark:bg-grey-700 dark:text-grey-50
-            shadow-lg
-            max-h-60
-            rounded-md
-            py-1
-            text-base
-            ring-1 ring-black ring-opacity-5
-            overflow-auto
-            focus:outline-none
-            sm:text-sm
-          "
+          class="absolute z-10 mt-1 w-full bg-white dark:bg-grey-700 dark:text-grey-50 shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
         >
           <ListboxOption
             as="template"
@@ -153,7 +95,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/vue";
-import { Size } from "../types";
+import { Size } from "../types/types";
 import { ref, watch, withDefaults } from "vue";
 import { useFormClasses } from "../utils/useFormClasses";
 

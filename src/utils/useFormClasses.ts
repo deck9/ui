@@ -1,5 +1,5 @@
 import { computed, ComputedRef } from "@vue/runtime-core";
-import { Size } from "../types";
+import { Size } from "../types/types";
 
 interface InputProps {
   size?: Size;

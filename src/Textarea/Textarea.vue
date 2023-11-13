@@ -1,20 +1,7 @@
 <template>
   <div class="relative">
     <textarea
-      class="
-        mono-50
-        bg-white
-        text-grey-800
-        placeholder:text-grey-400 placeholder:font-normal
-        border-grey-300
-        dark:bg-grey-800
-        dark:text-grey-100
-        dark:placeholder:text-grey-500
-        dark:border-grey-700
-        focus:border-blue-400 focus:ring-blue-400
-        dark:focus:border-blue-800 dark:focus:ring-blue-800
-        rounded
-      "
+      class="mono-50 bg-white text-grey-800 placeholder:text-grey-400 placeholder:font-normal border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder:text-grey-500 dark:border-grey-700 focus:border-blue-400 focus:ring-blue-400 dark:focus:border-blue-800 dark:focus:ring-blue-800 rounded"
       :class="[inputClasses, textSizeClasses, disabledClasses]"
       :tabindex="isDisabled ? '-1' : undefined"
       :value="modelValue ?? ''"
@@ -35,8 +22,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import D9Icon from "../Icon/Icon.vue";
-import { Size } from "../types";
+import { Size } from "../types/types";
 import { InputHTMLAttributes, Ref, ref, withDefaults } from "vue";
 import { useFormClasses } from "../utils/useFormClasses";
 

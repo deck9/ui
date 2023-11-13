@@ -1,15 +1,6 @@
 <template>
   <button
-    class="
-      relative
-      inline-flex
-      items-center
-      focus:outline-none focus:ring
-      active:ring
-      transition
-      duration-150
-      ease-in-out
-    "
+    class="relative inline-flex items-center focus:outline-none focus:ring active:ring transition duration-150 ease-in-out"
     type="button"
     :aria-label="label"
     :class="buttonClasses"
@@ -41,7 +32,7 @@
 
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
-import { ColorScheme, PositionHorizontal, Size } from "../types";
+import { ColorScheme, PositionHorizontal, Size } from "../types/types";
 import { computed, withDefaults } from "vue";
 
 interface ButtonProps {
