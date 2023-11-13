@@ -1,0 +1,89 @@
+🔎 checking possible migrations..
+
+⚠️  failed to check fix new-frameworks
+
+Error: ❌ Your project should be upgraded to use the framework package @storybook/vue3-webpack5, but we detected that you are using Vite 2.9.16, which is unsupported in Storybook 7.0. Please upgrade Vite to 3.0.0 or higher and rerun this migration.
+    at Object.check (/Users/philippreinking/Sites/@deck9/ui/node_modules/@storybook/cli/dist/generate.js:221:8731)
+    at async runFixes (/Users/philippreinking/Sites/@deck9/ui/node_modules/@storybook/cli/dist/generate.js:404:1239)
+    at async automigrate (/Users/philippreinking/Sites/@deck9/ui/node_modules/@storybook/cli/dist/generate.js:401:676)
+    at async doUpgrade (/Users/philippreinking/Sites/@deck9/ui/node_modules/@storybook/cli/dist/generate.js:433:3535)
+    at async withTelemetry (/Users/philippreinking/Sites/@deck9/ui/node_modules/@storybook/core-server/dist/index.js:103:3903)
+    at async upgrade (/Users/philippreinking/Sites/@deck9/ui/node_modules/@storybook/cli/dist/generate.js:433:3981)
+
+🔎 found a 'mdx1to2' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                  │
+│   We've found 2 '.stories.mdx' files in your project.                                                            │
+│                                                                                                                  │
+│   Storybook has upgraded to MDX2 (https://mdxjs.com/blog/v2/), which contains breaking changes from MDX1.        │
+│   We can try to automatically upgrade your MDX files to MDX2 format using some common patterns.                  │
+│                                                                                                                  │
+│   After this install completes, and before you start Storybook, we strongly recommend reading the MDX2 section   │
+│   of the 7.0 migration guide. It contains useful tools for detecting and fixing any remaining issues.            │
+│                                                                                                                  │
+│   https://storybook.js.org/migration-guides/7.0                                                                  │
+│                                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'mdx1to2' migration on your project? › (Y/n)✔ Do you want to run the 'mdx1to2' migration on your project? … yes
+🆗 Unmodified Icons.stories.mdx
+🆗 Unmodified Typography.stories.mdx
+✅ ran mdx1to2 migration
+
+🔎 found a 'github-flavored-markdown-mdx' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                │
+│   In MDX1 you had the option of using GitHub flavored markdown.                                                                                │
+│                                                                                                                                                │
+│   Storybook 7.0 uses MDX2 for compiling MDX, and thus no longer supports GFM out of the box.                                                   │
+│   Because of this you need to explicitly add the GFM plugin in the addon-docs options:                                                         │
+│   https://storybook.js.org/docs/react/writing-docs/mdx#lack-of-github-flavored-markdown-gfm                                                    │
+│                                                                                                                                                │
+│   We recommend you follow the guide on the link above, however we can add a temporary storybook addon that helps make this migration easier.   │
+│   We'll install the addon and add it to your storybook config.                                                                                 │
+│                                                                                                                                                │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'github-flavored-markdown-mdx' migration on your project? › (Y/n)✔ Do you want to run the 'github-flavored-markdown-mdx' migration on your project? … no
+
+╭ Migration check ran with failures ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                        │
+│   Successful migrations:                                                                                                                                                                               │
+│                                                                                                                                                                                                        │
+│   mdx1to2                                                                                                                                                                                              │
+│                                                                                                                                                                                                        │
+│   Failed migrations:                                                                                                                                                                                   │
+│                                                                                                                                                                                                        │
+│   new-frameworks:                                                                                                                                                                                      │
+│   ❌ Your project should be upgraded to use the framework package @storybook/vue3-webpack5, but we detected that you are using Vite 2.9.16, which is unsupported in Storybook 7.0. Please upgrade      │
+│   Vite to 3.0.0 or higher and rerun this migration.                                                                                                                                                    │
+│                                                                                                                                                                                                        │
+│   You can find the full logs in /Users/philippreinking/Sites/@deck9/ui/migration-storybook.log                                                                                                         │
+│                                                                                                                                                                                                        │
+│   Skipped migrations:                                                                                                                                                                                  │
+│                                                                                                                                                                                                        │
+│   github-flavored-markdown-mdx                                                                                                                                                                         │
+│                                                                                                                                                                                                        │
+│   ─────────────────────────────────────────────────                                                                                                                                                    │
+│                                                                                                                                                                                                        │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook@next automigrate'                                                                                                 │
+│                                                                                                                                                                                                        │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate to the latest version of Storybook.                                            │
+│                                                                                                                                                                                                        │
+│   Please check the changelog and migration guide for manual migrations and more information: https://storybook.js.org/migration-guides/7.0                                                             │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                                                                                              │
+│                                                                                                                                                                                                        │
+│   ─────────────────────────────────────────────────                                                                                                                                                    │
+│                                                                                                                                                                                                        │
+│   Attention: The following dependencies are duplicated which might cause unexpected behavior:                                                                                                          │
+│                                                                                                                                                                                                        │
+│   @storybook/core-common:                                                                                                                                                                              │
+│   6.5.16, 7.5.3                                                                                                                                                                                        │
+│                                                                                                                                                                                                        │
+│   @storybook/node-logger:                                                                                                                                                                              │
+│   6.5.16, 7.5.3                                                                                                                                                                                        │
+│                                                                                                                                                                                                        │
+│   You can find more information for a given dependency by running npm ls --depth=1 <package-name>                                                                                                      │
+│                                                                                                                                                                                                        │
+│   Please try de-duplicating these dependencies by running npm dedupe                                                                                                                                   │
+│                                                                                                                                                                                                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
