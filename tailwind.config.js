@@ -8,11 +8,6 @@ module.exports = {
     "./src/**/*.stories.{ts,tsx}",
   ],
 
-  safelist: [
-    { pattern: /svg.*/ },
-    { pattern: /fa.*/ }
-  ],
-
   darkMode: "class",
 
   theme: {

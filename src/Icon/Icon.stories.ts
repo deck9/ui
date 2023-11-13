@@ -1,5 +1,5 @@
-import { D9Icon } from "@/index";
-import { icons, brands } from "@/index";
+import { D9Icon } from "../index";
+import { icons, brands } from "../index";
 
 export default {
   title: "Basics/Icon",
