@@ -13,7 +13,7 @@ const Template = (args: Record<string, unknown>) => ({
 
     return { args, checked };
   },
-  template: '<d9-checkbox v-bind="args" v-model="checked" />',
+  template: '<D9Checkbox v-bind="args" v-model="checked" />',
 });
 
 export const WithLabel = Template.bind({});

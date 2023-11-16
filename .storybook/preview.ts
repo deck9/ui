@@ -1,7 +1,6 @@
 import "../styles/app.less";
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -9,23 +8,23 @@ export const parameters = {
     },
   },
   darkMode: {
-    classTarget: 'html',
-    stylePreview: true
+    classTarget: "html",
+    stylePreview: true,
   },
   backgrounds: {
-    default: 'light',
+    default: "light",
     values: [
       {
-        name: 'white',
-        value: '#ffffff',
+        name: "white",
+        value: "#ffffff",
       },
       {
-        name: 'light',
-        value: '#f9f8f6',
+        name: "light",
+        value: "#f9f8f6",
       },
       {
-        name: 'dark',
-        value: '#0f172a',
+        name: "dark",
+        value: "#0f172a",
       },
     ],
     grid: {
@@ -36,4 +35,4 @@ export const parameters = {
       offsetY: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
     },
   },
-}
+};

@@ -8,7 +8,7 @@ export default {
   component: D9Textarea,
   argTypes: {
     size: {
-      control: { type: "inline-radio" },
+      control: "inline-radio",
       options: ["small", "medium", "large"],
     },
   },
@@ -22,7 +22,7 @@ const Template = (args) => ({
     };
   },
   components: { D9Textarea },
-  template: `<div><d9-textarea v-bind="args" /></div>`,
+  template: `<div><D9Textarea v-bind="args" /></div>`,
 });
 
 export const Default = Template.bind({});

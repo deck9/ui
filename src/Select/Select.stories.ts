@@ -6,10 +6,11 @@ export default {
   component: D9Select,
   argTypes: {
     size: {
-      control: { type: "inline-radio" },
       options: ["small", "medium", "large"],
+      control: "inline-radio",
     },
-    icon: { control: { type: "select" }, options: icons },
+    icon: { options: icons, control: "select" },
+    modelValue: false,
   },
 };
 
@@ -34,7 +35,7 @@ const Template = (args) => ({
     };
   },
   components: { D9Select },
-  template: `<div><d9-select class="inline-block w-56" v-bind="{ options: people, ...args}" /></div>`,
+  template: `<div><D9Select class="inline-block w-56" v-bind="{ options: people, ...args}" /></div>`,
 });
 
 export const Default = Template.bind({});

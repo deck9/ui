@@ -13,7 +13,7 @@ const Template = (args: Record<string, unknown>) => ({
 
     return { args, enabled };
   },
-  template: '<d9-switch v-bind="args" v-model="enabled" />',
+  template: '<D9Switch v-bind="args" v-model="enabled" />',
 });
 
 export const IsOff = Template.bind({});

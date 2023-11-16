@@ -10,7 +10,7 @@ export const Default = (args: Record<string, unknown>) => ({
   setup() {
     return { args };
   },
-  template: '<d9-label id="name" label="Your name" />',
+  template: '<D9Label id="name" label="Your name" />',
 });
 
 export const WithDescription = (args: Record<string, unknown>) => ({
@@ -19,5 +19,5 @@ export const WithDescription = (args: Record<string, unknown>) => ({
     return { args };
   },
   template:
-    '<d9-label id="name" label="Your name" description="Please use your full name." />',
+    '<D9Label id="name" label="Your name" description="Please use your full name." />',
 });

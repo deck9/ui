@@ -6,10 +6,12 @@ export default {
   component: D9Icon,
   argTypes: {
     size: {
-      control: { type: "select", options: ["xs", "1x", "2x", "3x", "4x"] },
+      options: ["xs", "1x", "2x", "3x", "4x"],
+      control: { type: "inline-radio" },
     },
     name: {
-      control: { type: "select", options: [...icons, ...brands] },
+      options: [...icons, ...brands],
+      control: { type: "select" },
     },
   },
   decorators: [
@@ -25,7 +27,7 @@ const Template = (args, { argTypes }) => ({
   setup() {
     return { args };
   },
-  template: '<d9-icon v-bind="args" />',
+  template: '<D9Icon v-bind="args" />',
 });
 
 export const Primary = Template.bind({});

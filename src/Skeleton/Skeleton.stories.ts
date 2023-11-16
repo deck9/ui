@@ -5,16 +5,16 @@ export default {
   component: D9Skeleton,
   argTypes: {
     title: {
-      control: { type: "boolean" },
+      control: "boolean",
     },
     footer: {
-      control: { type: "boolean" },
+      control: "boolean",
     },
     avatar: {
-      control: { type: "boolean" },
+      control: "boolean",
     },
     lines: {
-      control: { type: "number" },
+      control: "number",
     },
   },
 };
@@ -24,7 +24,7 @@ const Template = (args: Record<string, unknown>) => ({
   setup() {
     return { args };
   },
-  template: "<d9-skeleton class='text-grey-100' v-bind='args' />",
+  template: "<D9Skeleton class='text-grey-100' v-bind='args' />",
 });
 
 export const Default = Template.bind({});
@@ -40,5 +40,5 @@ Minimal.args = {
   lines: 3,
   footer: false,
   title: true,
-  avatar: false
-}
+  avatar: false,
+};

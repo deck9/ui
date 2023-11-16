@@ -6,16 +6,18 @@ export default {
   component: D9Button,
   argTypes: {
     color: {
-      control: {
-        type: "select",
-        options: ["primary", "light", "dark", "danger"],
-      },
+      options: ["primary", "light", "dark", "danger"],
+      control: "inline-radio",
     },
     size: {
-      control: { type: "select", options: ["small", "medium", "large"] },
+      options: ["small", "medium", "large"],
+      control: "inline-radio",
     },
-    icon: { control: { type: "select", options: icons } },
-    iconPosition: { control: { type: "select", options: ["left", "right"] } },
+    icon: { options: icons, control: "select" },
+    iconPosition: {
+      options: ["left", "right"],
+      control: "inline-radio",
+    },
     onClick: { action: "clicked" },
   },
 };
@@ -25,7 +27,7 @@ const Template = (args: Record<string, unknown>) => ({
   setup() {
     return { args };
   },
-  template: '<d9-button v-bind="args" />',
+  template: '<D9Button v-bind="args" />',
 });
 
 export const Medium = Template.bind({});

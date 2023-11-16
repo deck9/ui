@@ -10,7 +10,7 @@ const Template = (args: Record<string, unknown>) => ({
   setup() {
     return { args };
   },
-  template: "<d9-spinner class='text-grey-300' v-bind='args' />",
+  template: "<D9Spinner class='text-grey-300' v-bind='args' />",
 });
 
 export const Default = Template.bind({});

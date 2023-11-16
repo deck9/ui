@@ -1,12 +1,10 @@
 <template>
-  <div
-    class="relative inline-flex items-center focus:outline-none focus:ring active:ring transition duration-150 ease-in-out rounded-lg overflow-hidden"
-  >
+  <div class="relative inline-flex items-center">
     <button
       type="button"
       :aria-label="label"
       :tabindex="isDisabled ? '-1' : undefined"
-      class="relative"
+      class="relative transition duration-150 ease-in-out rounded-l-lg"
       :class="buttonClasses"
       @click="onClickMain"
     >
@@ -22,7 +20,8 @@
       </span>
     </button>
     <button
-      class="border-l-white/50 border-l"
+      type="button"
+      class="border-l-white/50 border-l transition duration-150 ease-in-out rounded-r-lg"
       :class="[buttonClasses, splitButtonClasses]"
       @click="onClickSplit"
     >

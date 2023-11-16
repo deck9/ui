@@ -7,13 +7,14 @@ export default {
   argTypes: {
     color: {
       options: ["primary", "light", "dark", "danger"],
+      control: "inline-radio",
     },
     size: {
       options: ["small", "medium", "large"],
+      control: "inline-radio",
     },
-    icon: { options: icons, control: { type: "select" } },
-    iconPosition: { options: ["left", "right"] },
-    onClick: { action: "clicked" },
+    icon: { options: icons, control: "select" },
+    iconPosition: { options: ["left", "right"], control: "inline-radio" },
   },
 };
 
