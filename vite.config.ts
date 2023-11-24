@@ -9,8 +9,7 @@ export default defineConfig({
     lib: {
       entry: "src/index.ts",
       name: "ui",
-      formats: ["es", "umd"],
-      fileName: (format) => `src/index.${format}.js`,
+      fileName: "src/ui",
     },
     rollupOptions: {
       external: [
