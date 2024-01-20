@@ -1,6 +1,6 @@
 {
   "name": "@deck9/ui",
-  "version": "0.13.3",
+  "version": "0.14.0",
   "description": "The UI components used in deck9 software applications.",
   "author": "Philipp Reinking <philipp@deck9.co> (https://deck9.co)",
   "scripts": {
@@ -26,13 +26,13 @@
   },
   "dependencies": {
     "@deck9/tailwindcss-recursive-font-helper": "^1.0.1",
+    "@floating-ui/vue": "^1.0.4",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@headlessui/vue": "^1.7.11",
-    "@popperjs/core": "^2.11.6",
     "@storybook/addon-styling-webpack": "^0.0.5",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.9",

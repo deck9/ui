@@ -4,11 +4,14 @@ export default {
   title: "Basics/Menu",
   component: D9Menu,
   decorators: [
-    () => ({ template: '<div class="px-12 md:px-24 py-32 "><story/></div>' }),
+    () => ({
+      template: '<div style="margin-left: 19%;" class="py-32 "><story/></div>',
+    }),
   ],
   argTypes: {
     position: {
-      control: { type: "select", options: ["left", "right"] },
+      control: { type: "select" },
+      options: ["left", "right"],
     },
   },
 };
@@ -54,5 +57,5 @@ UsePortal.args = {
 export const UsePortalWithCustomTarget: any = Template.bind({});
 UsePortalWithCustomTarget.args = {
   position: "right",
-  usePortal: "#root",
+  usePortal: ".sb-show-main",
 };

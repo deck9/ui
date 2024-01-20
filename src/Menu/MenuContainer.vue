@@ -1,6 +1,6 @@
 <template>
-  <Menu as="div" class="relative inline-block text-left" v-slot="{ open }">
-    <MenuButton class="focus:outline-none" ref="button">
+  <Menu as="div" class="inline-block text-left">
+    <MenuButton class="focus:outline-none" ref="reference">
       <slot name="button">
         <D9Icon class="fill-current" name="ellipsis-h" />
       </slot>
@@ -8,9 +8,9 @@
 
     <teleport
       :to="typeof usePortal === 'string' ? usePortal : 'body'"
-      :disabled="!usePortal"
+      :disabled="false || !usePortal"
     >
-      <div ref="container" class="w-56" :class="open ? 'mt-' : 'mt-px'">
+      <div class="w-56" :style="floatingStyles" ref="floating">
         <transition
           enter-active-class="transition duration-200 ease-in-out"
           enter-from-class="transform -translate-y-4 opacity-0"
@@ -21,12 +21,6 @@
         >
           <MenuItems
             :class="[
-              {
-                'absolute left-0 origin-top-left':
-                  !usePortal && position === 'right',
-                'absolute right-0 origin-top-right':
-                  !usePortal && position === 'left',
-              },
               'z-40 mt-1 p-1 bg-white rounded shadow-lg text-grey-700 focus:outline-none w-full',
             ]"
           >
@@ -41,8 +35,8 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
 import { D9Icon } from "../index";
-import { withDefaults } from "vue";
-import { usePopper } from "../utils/usePopper";
+import { onMounted, ref, watchEffect, withDefaults } from "vue";
+import { useFloating, autoUpdate, flip, shift, offset } from "@floating-ui/vue";
 
 const props = withDefaults(
   defineProps<{
@@ -55,7 +49,14 @@ const props = withDefaults(
   }
 );
 
+const reference = ref(null);
+const floating = ref(null);
+
 const placement = props.position === "left" ? "bottom-end" : "bottom-start";
 
-const [button, container] = usePopper({ placement });
+const { floatingStyles } = useFloating(reference, floating, {
+  placement,
+  whileElementsMounted: autoUpdate,
+  middleware: [offset(6), flip(), shift({ padding: 6 })],
+});
 </script>
