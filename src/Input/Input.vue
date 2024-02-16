@@ -64,12 +64,11 @@ import {
 } from "vue";
 import { useEyeDropper } from "@vueuse/core";
 import { useFormClasses } from "../utils/useFormClasses";
-import { valueToNode } from "@babel/types";
 import { Size } from "../types/types";
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string | null;
+    modelValue?: string | number | null;
     type: string;
     placeholder?: string;
     size?: Size;
@@ -85,12 +84,12 @@ const props = withDefaults(
   }
 );
 
-const localValue = ref(props.modelValue ?? "");
+const localValue = ref<string | number | null>(props.modelValue ?? "");
 
 watch(
   () => props.modelValue,
   (newValue) => {
-    if (typeof newValue === "string" && newValue !== localValue.value) {
+    if (typeof newValue !== "undefined" && newValue !== localValue.value) {
       localValue.value = newValue;
     }
   }
