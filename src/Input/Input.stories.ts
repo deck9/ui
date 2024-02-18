@@ -31,7 +31,7 @@ const Template = (args) => ({
     };
   },
   components: { D9Input },
-  template: `<div><D9Input v-bind="args" /></div>`,
+  template: `<div><D9Input class="min-w-md" v-bind="args" /></div>`,
 });
 
 export const Default = Template.bind({});
@@ -77,4 +77,13 @@ ColorInput.args = {
   size: "medium",
   type: "color",
   showColorPicker: true,
+};
+
+export const NumberInput = Template.bind({});
+NumberInput.args = {
+  placeholder: "Your number Input",
+  size: "medium",
+  min: 1,
+  max: 10,
+  type: "number",
 };

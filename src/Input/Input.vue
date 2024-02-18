@@ -73,6 +73,8 @@ const props = withDefaults(
     placeholder?: string;
     size?: Size;
     icon?: string;
+    min?: number;
+    max?: number;
     isDisabled?: boolean;
     block?: boolean;
     showColorPicker?: boolean;
@@ -96,7 +98,7 @@ watch(
 );
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
+  (e: "update:modelValue", value: string | number | null): void;
 }>();
 
 const { inputClasses, disabledClasses, textSizeClasses } =
@@ -126,8 +128,22 @@ watch(sRGBHex, (value) => {
 });
 
 const onInput = function (payload: Event): void {
+  const value = (payload?.target as InputHTMLAttributes).value;
+
+  if (props.min && parseInt(value) < props.min) {
+    localValue.value = props.min;
+    emit("update:modelValue", props.min);
+    return;
+  }
+
+  if (props.max && parseInt(value) > props.max) {
+    localValue.value = props.max;
+    emit("update:modelValue", props.max);
+    return;
+  }
+
   localValue.value = (payload?.target as InputHTMLAttributes).value;
-  emit("update:modelValue", (payload?.target as InputHTMLAttributes).value);
+  emit("update:modelValue", localValue.value);
 };
 
 const input = ref(null) as unknown as Ref<HTMLInputElement>;
