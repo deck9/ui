@@ -8,7 +8,7 @@
       :tabindex="isDisabled ? '-1' : undefined"
       :value="localValue"
       v-bind="$attrs"
-      ref="input"
+      ref="inputElement"
       @input="onInput"
     />
 
@@ -86,6 +86,7 @@ const props = withDefaults(
   }
 );
 
+const inputElement = ref(null) as unknown as Ref<HTMLInputElement>;
 const localValue = ref<string | number | null>(props.modelValue ?? "");
 
 watch(
@@ -130,14 +131,16 @@ watch(sRGBHex, (value) => {
 const onInput = function (payload: Event): void {
   const value = (payload?.target as InputHTMLAttributes).value;
 
-  if (props.min && parseInt(value) < props.min) {
+  if (props.type === "number" && props.min && parseInt(value) < props.min) {
     localValue.value = props.min;
+    inputElement.value.value = localValue.value.toString();
     emit("update:modelValue", props.min);
     return;
   }
 
-  if (props.max && parseInt(value) > props.max) {
+  if (props.type === "number" && props.max && parseInt(value) > props.max) {
     localValue.value = props.max;
+    inputElement.value.value = localValue.value.toString();
     emit("update:modelValue", props.max);
     return;
   }
