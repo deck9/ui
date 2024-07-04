@@ -10,7 +10,7 @@
       :to="typeof usePortal === 'string' ? usePortal : 'body'"
       :disabled="false || !usePortal"
     >
-      <div class="w-56" :style="floatingStyles" ref="floating">
+      <div class="w-56 z-20" :style="floatingStyles" ref="floating">
         <transition
           enter-active-class="transition duration-200 ease-in-out"
           enter-from-class="transform -translate-y-4 opacity-0"
