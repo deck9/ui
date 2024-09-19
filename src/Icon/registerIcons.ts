@@ -50,6 +50,7 @@ library.add(
   fasIcons.faHashtag,
   fasIcons.faHeading,
   fasIcons.faHeart,
+  fasIcons.faImage,
   fasIcons.faInfoCircle,
   fasIcons.faItalic,
   fasIcons.faLink,
