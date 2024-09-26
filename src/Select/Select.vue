@@ -11,7 +11,9 @@
         >
           <D9Icon :name="selected?.icon ?? icon" />
         </span>
-        <span v-if="selected" class="block truncate">{{ selected.label }}</span>
+        <span v-if="selected" class="block truncate"
+          ><span v-html="selected.label"></span
+        ></span>
         <span class="text-grey-500 truncate" v-else>{{ placeholder }}</span>
         <span
           class="absolute right-0 inset-y-0 inline-flex items-center justify-center text-grey-700 dark:text-grey-100 px-4 pointer-events-none"
