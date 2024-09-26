@@ -67,8 +67,8 @@
                   v-if="item.icon"
                   :name="item.icon"
                 />
-                {{ item.label }}</span
-              >
+                <span v-html="item.label"></span>
+              </span>
 
               <span
                 v-if="selected"
