@@ -65,6 +65,7 @@ library.add(
   fasIcons.faImage,
   fasIcons.faInfoCircle,
   fasIcons.faItalic,
+  fasIcons.faLayerGroup,
   fasIcons.faLink,
   fasIcons.faLinkSlash,
   fasIcons.faList,
