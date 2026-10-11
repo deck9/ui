@@ -42,3 +42,27 @@ Disabled.args = {
   modelValue: true,
   disabled: true,
 };
+
+export const DisabledUnchecked = Template.bind({});
+DisabledUnchecked.args = {
+  label: "Check me out",
+  description: "I am a description which can be used to display more text",
+  modelValue: false,
+  disabled: true,
+};
+
+export const TwoWithoutId = () => ({
+  components: { D9Checkbox },
+  setup() {
+    const first = ref(false);
+    const second = ref(false);
+
+    return { first, second };
+  },
+  template: `
+    <div class="space-y-2">
+      <D9Checkbox label="First" v-model="first" />
+      <D9Checkbox label="Second" v-model="second" />
+    </div>
+  `,
+});
