@@ -3,6 +3,7 @@
     as="div"
     :model-value="selected"
     @update:model-value="onSelect"
+    :by="by"
     :disabled="isDisabled"
   >
     <div class="relative">
@@ -18,9 +19,16 @@
         >
           <D9Icon :name="selected?.icon ?? icon" />
         </span>
-        <span v-if="selected" class="block truncate"
-          ><span v-html="selected.label"></span
-        ></span>
+        <span v-if="selected" class="block truncate">
+          <slot
+            name="option"
+            :option="selected"
+            :active="false"
+            :selected="true"
+          >
+            {{ selected.label }}
+          </slot>
+        </span>
         <span class="text-grey-500 truncate" v-else>{{ placeholder }}</span>
         <span
           class="absolute right-0 inset-y-0 inline-flex items-center justify-center text-grey-700 dark:text-grey-100 px-4 pointer-events-none"
@@ -44,7 +52,7 @@
           <ListboxOption
             as="template"
             v-for="item in options"
-            :key="item.id"
+            :key="optionKey(item)"
             :value="item"
             :disabled="item.disabled"
             v-slot="{ active, selected }"
@@ -76,7 +84,14 @@
                   v-if="item.icon"
                   :name="item.icon"
                 />
-                <span v-html="item.label"></span>
+                <slot
+                  name="option"
+                  :option="item"
+                  :active="active"
+                  :selected="selected"
+                >
+                  {{ item.label }}
+                </slot>
               </span>
 
               <span
@@ -110,7 +125,7 @@ import { useFormClasses } from "../utils/useFormClasses";
 
 interface SelectOption {
   [key: string]: unknown;
-  id: string | number;
+  id?: string | number;
   label: string | number;
   icon?: string;
   disabled?: boolean;
@@ -126,6 +141,8 @@ const props = withDefaults(
     isDisabled?: boolean;
     options: Array<SelectOption>;
     disabledBadge?: string;
+    // a field name or a compare function, so rebuilt option objects still match the value
+    by?: string | ((a: SelectOption, b: SelectOption) => boolean);
   }>(),
   {
     size: "medium",
@@ -138,6 +155,10 @@ const selected = ref(props.modelValue ?? null);
 const emit = defineEmits<{
   (e: "update:modelValue", value: SelectOption): void;
 }>();
+
+// with a field name in `by`, options need no `id`
+const optionKey = (item: SelectOption) =>
+  (typeof props.by === "string" ? item[props.by] : item.id) as PropertyKey;
 
 const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
