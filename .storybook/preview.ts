@@ -1,4 +1,14 @@
 import "../styles/app.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faEnvelope,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+
+// Demo icons the stories use; like any app, Storybook registers its own icons
+library.add(faChevronLeft, faChevronRight, faEnvelope, faUser);
 
 export const parameters = {
   controls: {

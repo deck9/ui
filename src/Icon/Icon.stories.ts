@@ -1,5 +1,10 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { D9Icon } from "../index";
-import { icons, brands } from "../index";
+
+// Neither icon is in D9's own list: registered here the way an app does
+library.add(faRocket, faGithub);
 
 export default {
   title: "Basics/Icon",
@@ -8,10 +13,6 @@ export default {
     size: {
       options: ["xs", "1x", "2x", "3x", "4x"],
       control: { type: "inline-radio" },
-    },
-    name: {
-      options: [...icons, ...brands],
-      control: { type: "select" },
     },
   },
   decorators: [
@@ -45,5 +46,17 @@ Small.args = {
 export const Large = Template.bind({});
 Large.args = {
   name: "user",
+  size: "2x",
+};
+
+export const AppRegistered = Template.bind({});
+AppRegistered.args = {
+  name: "rocket",
+  size: "2x",
+};
+
+export const AppRegisteredBrand = Template.bind({});
+AppRegisteredBrand.args = {
+  name: "github",
   size: "2x",
 };
