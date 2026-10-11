@@ -105,7 +105,7 @@ import {
   ListboxOptions,
 } from "@headlessui/vue";
 import { Size } from "../types/types";
-import { computed, ref, watch, withDefaults } from "vue";
+import { computed, onMounted, ref, watch, withDefaults } from "vue";
 import { useFormClasses } from "../utils/useFormClasses";
 
 interface SelectOption {
@@ -142,9 +142,18 @@ const emit = defineEmits<{
 const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
 
-// D9Label's text plus the button's own, so a linked label doesn't hide the chosen value
+// D9Label's text plus the button's own, so a linked label doesn't hide the chosen value.
+// Only when that D9Label exists: otherwise a plain <label for> would drop out of the name.
+// shortcut: checked on mount and on id change only, so a D9Label added later isn't seen.
+const hasLabel = ref(false);
+const findLabel = () => {
+  hasLabel.value =
+    !!props.id && !!document.getElementById(`${props.id}-label`);
+};
+onMounted(findLabel);
+watch(() => props.id, findLabel, { flush: "post" });
 const labelledBy = computed(() =>
-  props.id ? `${props.id}-label ${props.id}` : undefined
+  hasLabel.value ? `${props.id}-label ${props.id}` : undefined
 );
 
 watch(

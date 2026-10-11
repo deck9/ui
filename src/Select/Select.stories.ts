@@ -139,8 +139,9 @@ export const CopyingParent = () => ({
 });
 
 // D9Labels linked by id: clicking a label opens its select, and the button's
-// name is the label plus the chosen value or placeholder. The last select has
-// an id but no D9Label, so it's named by its own text.
+// name is the label plus the chosen value or placeholder. A plain <label for>
+// still names its select alone, and a select with an id but no label is named
+// by its own text.
 export const WithLabel = () => ({
   components: { D9Label, D9Select },
   setup() {
@@ -161,6 +162,10 @@ export const WithLabel = () => ({
       <div class="space-y-1">
         <D9Label id="assignee" label="Assignee" />
         <D9Select id="assignee" placeholder="Please select..." :options="people" />
+      </div>
+      <div class="space-y-1">
+        <label for="owner" class="block text-sm">Owner</label>
+        <D9Select id="owner" placeholder="Pick an owner" :options="people" />
       </div>
       <D9Select id="reviewer" placeholder="Pick a reviewer" :options="people" />
     </div>
