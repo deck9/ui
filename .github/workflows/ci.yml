@@ -31,3 +31,5 @@ jobs:
               process.exit(1);
             }
           '
+      - name: Check that the type files in dist type-check
+        run: npx tsc -p tsconfig.dist.json
