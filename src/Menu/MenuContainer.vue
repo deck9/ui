@@ -4,6 +4,9 @@
       <slot name="button">
         <D9Icon class="fill-current" name="ellipsis-h" />
       </slot>
+      <span v-if="!hasText($slots.button?.())" class="sr-only">{{
+        label
+      }}</span>
     </MenuButton>
 
     <teleport
@@ -35,19 +38,36 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
 import { D9Icon } from "../index";
-import { onMounted, ref, watchEffect, withDefaults } from "vue";
+import {
+  Comment,
+  onMounted,
+  ref,
+  watchEffect,
+  withDefaults,
+  type VNode,
+} from "vue";
 import { useFloating, autoUpdate, flip, shift, offset } from "@floating-ui/vue";
 
 const props = withDefaults(
   defineProps<{
     position: "left" | "right";
     usePortal: boolean | string;
+    label?: string;
   }>(),
   {
     position: "left",
     usePortal: false,
+    label: "Open menu",
   }
 );
+
+// A trigger with its own visible text is already named by it; the label would double it.
+const hasText = (nodes: VNode[] = []): boolean =>
+  nodes.some((node) =>
+    typeof node.children === "string"
+      ? node.type !== Comment && node.children.trim() !== ""
+      : Array.isArray(node.children) && hasText(node.children as VNode[])
+  );
 
 const reference = ref(null);
 const floating = ref(null);
