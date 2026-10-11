@@ -171,3 +171,67 @@ export const WithLabel = () => ({
     </div>
   `,
 });
+
+// Labels are plain text: markup in a label shows as written, in the list and the button
+export const LabelsAsText = () => ({
+  components: { D9Select },
+  setup() {
+    const options = [
+      { id: 1, label: "<img src=x onerror=alert(1)>" },
+      { id: 2, label: "<b>Not bold</b>" },
+    ];
+    const value = ref(options[0]);
+
+    return { options, value };
+  },
+  template: `<div class="w-56"><D9Select v-model="value" :options="options" /></div>`,
+});
+
+// Same shape as Input's logic editor: a badge per block through the option
+// slot, and options rebuilt as new objects. After a rebuild, the select with
+// `by="key"` still shows the checkmark; the one without `by` loses it.
+export const OptionSlot = () => ({
+  components: { D9Label, D9Select },
+  setup() {
+    const blocks = () => [
+      { key: "a1", title: "A1", text: "What is your name?" },
+      { key: "a2", title: "A2", text: "How old are you?" },
+      { key: "b1", title: "B1", text: "Where do you live?" },
+    ];
+    const toOption = (block) => ({ ...block, label: block.text });
+    const options = ref(blocks().map(toOption));
+    const selects = ref([
+      {
+        id: "with-by",
+        title: 'With by="key"',
+        by: "key",
+        value: options.value[1],
+      },
+      { id: "without-by", title: "Without by", value: options.value[1] },
+    ]);
+    const rebuilds = ref(0);
+    const rebuild = () => {
+      options.value = blocks().map(toOption);
+      rebuilds.value++;
+    };
+
+    return { options, selects, rebuilds, rebuild };
+  },
+  template: `
+    <div class="w-96 space-y-4">
+      <div v-for="select in selects" :key="select.id" class="space-y-1">
+        <D9Label :id="select.id" :label="select.title" />
+        <D9Select :id="select.id" v-model="select.value" :options="options" :by="select.by" placeholder="Select a block">
+          <template #option="{ option }">
+            <span class="inline-flex items-center text-xs">
+              <span class="bg-grey-700 text-white rounded mr-2 px-1 py-px w-16 truncate inline-block text-center">{{ option.title }}</span>
+              <span class="inline-block truncate">{{ option.text }}</span>
+            </span>
+          </template>
+        </D9Select>
+      </div>
+      <button type="button" class="text-sm text-blue-600" @click="rebuild">Rebuild options</button>
+      <p class="text-xs text-grey-600">Rebuilds: {{ rebuilds }}</p>
+    </div>
+  `,
+});
