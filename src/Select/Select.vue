@@ -1,5 +1,10 @@
 <template>
-  <Listbox as="div" v-model="selected" :disabled="isDisabled">
+  <Listbox
+    as="div"
+    :model-value="selected"
+    @update:model-value="onSelect"
+    :disabled="isDisabled"
+  >
     <div class="relative">
       <ListboxButton
         class="w-full mono-50 bg-white text-grey-800 placeholder-grey-600 border border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:ring-2 focus:border-blue-400 focus:ring-blue-400 focus:outline-none dark:focus:border-blue-800 dark:focus:ring-blue-800 cursor-default rounded font-normal text-left"
@@ -125,7 +130,7 @@ const props = withDefaults(
   }
 );
 
-const selected = props.modelValue ? ref(props.modelValue) : ref(undefined);
+const selected = ref(props.modelValue ?? null);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: SelectOption): void;
@@ -135,19 +140,16 @@ const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
 
 watch(
-  () => props.modelValue as SelectOption,
-  (value: SelectOption) => {
-    if (!value) return;
-
-    if (value.id !== selected.value?.id) {
-      selected.value = value;
-    }
+  () => props.modelValue,
+  (value) => {
+    // null, not undefined: on undefined the Listbox falls back to its last pick
+    selected.value = value ?? null;
   }
 );
 
-watch(selected, (value?: SelectOption) => {
-  if (value) {
-    emit("update:modelValue", value);
-  }
-});
+// emit only on a pick, so outside changes don't echo back to the parent
+const onSelect = (value: SelectOption) => {
+  selected.value = value;
+  emit("update:modelValue", value);
+};
 </script>
