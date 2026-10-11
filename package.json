@@ -17,9 +17,10 @@
   ],
   "main": "./dist/src/ui.umd.js",
   "module": "./dist/src/ui.mjs",
-  "types": "./dist/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/src/ui.mjs",
       "require": "./dist/src/ui.umd.js"
     }
