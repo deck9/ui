@@ -26,13 +26,14 @@ npm install -D tailwindcss@3 postcss autoprefixer @tailwindcss/forms
 npx tailwindcss init -p
 ```
 
-In `tailwind.config.js`, add the package's bundle to `content`, plus the `grey` color and the forms plugin the components use:
+In `tailwind.config.js`, add the package's bundle to `content`, plus the `grey` color and the forms plugin the components use. `darkMode: "class"` keeps the components light until the app sets a `dark` class. Without it, they turn dark whenever the computer is in dark mode.
 
 ```js
 import colors from "tailwindcss/colors";
 import forms from "@tailwindcss/forms";
 
 export default {
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts}",
