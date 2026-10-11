@@ -8,6 +8,7 @@
     <div class="relative">
       <ListboxButton
         :id="id"
+        :aria-labelledby="labelledBy"
         class="w-full mono-50 bg-white text-grey-800 placeholder-grey-600 border border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:ring-2 focus:border-blue-400 focus:ring-blue-400 focus:outline-none dark:focus:border-blue-800 dark:focus:ring-blue-800 cursor-default rounded font-normal text-left"
         :class="[inputClasses, textSizeClasses, disabledClasses]"
       >
@@ -104,7 +105,7 @@ import {
   ListboxOptions,
 } from "@headlessui/vue";
 import { Size } from "../types/types";
-import { ref, watch, withDefaults } from "vue";
+import { computed, onMounted, ref, watch, withDefaults } from "vue";
 import { useFormClasses } from "../utils/useFormClasses";
 
 interface SelectOption {
@@ -140,6 +141,20 @@ const emit = defineEmits<{
 
 const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
+
+// D9Label's text plus the button's own, so a linked label doesn't hide the chosen value.
+// Only when that D9Label exists: otherwise a plain <label for> would drop out of the name.
+// shortcut: checked on mount and on id change only, so a D9Label added later isn't seen.
+const hasLabel = ref(false);
+const findLabel = () => {
+  hasLabel.value =
+    !!props.id && !!document.getElementById(`${props.id}-label`);
+};
+onMounted(findLabel);
+watch(() => props.id, findLabel, { flush: "post" });
+const labelledBy = computed(() =>
+  hasLabel.value ? `${props.id}-label ${props.id}` : undefined
+);
 
 watch(
   () => props.modelValue,

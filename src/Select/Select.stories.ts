@@ -138,16 +138,36 @@ export const CopyingParent = () => ({
   `,
 });
 
-// A D9Label linked by id: clicking the label text opens the select
+// D9Labels linked by id: clicking a label opens its select, and the button's
+// name is the label plus the chosen value or placeholder. A plain <label for>
+// still names its select alone, and a select with an id but no label is named
+// by its own text.
 export const WithLabel = () => ({
   components: { D9Label, D9Select },
   setup() {
-    return { people };
+    const languages = [
+      { id: "en", label: "English" },
+      { id: "de", label: "German" },
+    ];
+    const language = ref(languages[0]);
+
+    return { people, languages, language };
   },
   template: `
-    <div class="w-56 space-y-1">
-      <D9Label id="assignee" label="Assignee" />
-      <D9Select id="assignee" placeholder="Please select..." :options="people" />
+    <div class="w-56 space-y-4">
+      <div class="space-y-1">
+        <D9Label id="language" label="Language" />
+        <D9Select id="language" v-model="language" :options="languages" />
+      </div>
+      <div class="space-y-1">
+        <D9Label id="assignee" label="Assignee" />
+        <D9Select id="assignee" placeholder="Please select..." :options="people" />
+      </div>
+      <div class="space-y-1">
+        <label for="owner" class="block text-sm">Owner</label>
+        <D9Select id="owner" placeholder="Pick an owner" :options="people" />
+      </div>
+      <D9Select id="reviewer" placeholder="Pick a reviewer" :options="people" />
     </div>
   `,
 });
