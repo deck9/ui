@@ -142,7 +142,7 @@ const props = withDefaults(
     options: Array<SelectOption>;
     disabledBadge?: string;
     // a field name or a compare function, so rebuilt option objects still match the value
-    by?: string | ((a: SelectOption, b: SelectOption) => boolean);
+    by?: string | ((a: SelectOption | null, b: SelectOption) => boolean);
   }>(),
   {
     size: "medium",
