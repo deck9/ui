@@ -1,12 +1,26 @@
 #!/bin/bash
+set -euo pipefail
 
-# Run npm version and save the output
-PACKAGE_VERSION=$(npm version $1)
+if [ "$#" -eq 0 ]; then
+  echo "Usage: ./release.sh <patch|minor|major|preminor|prerelease|...> [npm version options]" >&2
+  echo "Example: ./release.sh preminor --preid next" >&2
+  exit 1
+fi
 
-git push
-git push origin $PACKAGE_VERSION
+git pull --ff-only
+npm run build
 
-echo Pushed new version $PACKAGE_VERSION
+PACKAGE_VERSION=$(npm version "$@")
 
-gh release create $PACKAGE_VERSION \
-  --generate-notes
+# atomic: if main is rejected, the tag stays local too, so no release can publish it
+git push --atomic origin HEAD "$PACKAGE_VERSION" || {
+  echo "Push failed. Undo the local bump, then run again: git tag -d $PACKAGE_VERSION && git reset --hard HEAD~1" >&2
+  exit 1
+}
+
+echo "Pushed new version $PACKAGE_VERSION"
+
+case "$PACKAGE_VERSION" in
+  *-*) gh release create "$PACKAGE_VERSION" --generate-notes --prerelease ;;
+  *) gh release create "$PACKAGE_VERSION" --generate-notes ;;
+esac
