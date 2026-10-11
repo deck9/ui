@@ -9,7 +9,7 @@
       casual-20
     "
   >
-    <label :for="id">{{ label }}</label>
+    <label :id="id ? `${id}-label` : undefined" :for="id">{{ label }}</label>
     <span
       class="block text-xs text-grey-400 font-normal mono-0 casual-60"
       v-if="description"
