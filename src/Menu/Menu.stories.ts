@@ -59,3 +59,23 @@ UsePortalWithCustomTarget.args = {
   position: "right",
   usePortal: ".sb-show-main",
 };
+
+// A trigger with visible text keeps that text as its name; the label is not added.
+export const TriggerWithText: any = (args: Record<string, unknown>) => ({
+  components: { D9Menu, D9MenuLink },
+  setup() {
+    return { args };
+  },
+  template: `
+      <D9Menu v-bind="args">
+        <template #button>
+          <span class="rounded px-2 py-1 text-xs bg-grey-200">Published</span>
+        </template>
+        <D9MenuLink as="a" href="#" label="Set to Unpublished"></D9MenuLink>
+      </D9Menu>
+  `,
+});
+TriggerWithText.args = {
+  position: "right",
+  usePortal: false,
+};
