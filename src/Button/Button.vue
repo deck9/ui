@@ -4,8 +4,8 @@
     type="button"
     :aria-label="label"
     :class="buttonClasses"
-    :tabindex="isDisabled ? '-1' : undefined"
-    @click="onClick"
+    :disabled="isDisabled || isLoading"
+    :aria-busy="isLoading"
   >
     <div :class="!isLoading || 'invisible'">
       <D9Icon
@@ -44,12 +44,6 @@ interface ButtonProps {
   icon?: string;
   iconPosition?: PositionHorizontal;
 }
-
-interface ButtonEmits {
-  (e: "onClick"): void;
-}
-
-const emit = defineEmits<ButtonEmits>();
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   size: "medium",
@@ -118,12 +112,4 @@ const iconClasses = computed(() => {
     ...colors,
   };
 });
-
-function onClick() {
-  if (props.isDisabled) {
-    return;
-  }
-
-  emit("onClick");
-}
 </script>

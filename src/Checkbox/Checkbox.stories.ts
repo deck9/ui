@@ -35,3 +35,10 @@ Checked.args = {
   description: "I am a description which can be used to display more text",
   modelValue: true,
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "Check me out",
+  modelValue: true,
+  disabled: true,
+};

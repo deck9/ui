@@ -1,5 +1,6 @@
-import { D9Button } from "../index";
+import { D9Button, D9Input } from "../index";
 import { icons } from "../index";
+import { ref } from "vue";
 
 export default {
   title: "Basics/Button",
@@ -87,4 +88,30 @@ LoadingAndDisabled.args = {
   label: "Hey Button",
   isDisabled: true,
   isLoading: true,
+};
+
+// Each save keeps the button loading for 2 seconds: clicks and Enter during a save must not count.
+export const SubmitDuringSave = (args: Record<string, unknown>) => ({
+  components: { D9Button, D9Input },
+  setup() {
+    const saving = ref(false);
+    const saves = ref(0);
+
+    const save = () => {
+      saves.value++;
+      saving.value = true;
+      setTimeout(() => (saving.value = false), 2000);
+    };
+
+    return { args, saving, saves, save };
+  },
+  template: `
+    <form class="flex items-center gap-2" @submit.prevent="save">
+      <D9Input type="text" placeholder="Press Enter to save" />
+      <D9Button v-bind="args" type="submit" :isLoading="saving" />
+      <span class="text-sm">Saves: {{ saves }}</span>
+    </form>`,
+});
+SubmitDuringSave.args = {
+  label: "Save",
 };
