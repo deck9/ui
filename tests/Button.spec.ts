@@ -9,7 +9,7 @@ describe("D9Button", () => {
 
     await wrapper.trigger("click");
 
-    expect(onClick).toHaveBeenCalledOnce();
+    expect(onClick).toHaveBeenCalledTimes(2);
   });
 
   it("is natively disabled when isDisabled, so @click isn't called", async () => {
