@@ -1,4 +1,4 @@
-import { D9Button, D9Input } from "../index";
+import { D9Button, D9Input, D9Label } from "../index";
 import { icons } from "../index";
 import { v4 as uuidv4 } from "uuid";
 import { nextTick, ref } from "vue";
@@ -87,6 +87,44 @@ NumberInput.args = {
   max: 10,
   type: "number",
 };
+
+export const NumberClamping = () => ({
+  components: { D9Input, D9Label },
+  setup() {
+    const cases = ref([
+      { id: "max-8", label: "max 8: type 8.9", max: 8, value: "" },
+      { id: "max-10", label: "max 10: type 1e3", max: 10, value: "" },
+      { id: "min-0", label: "min 0: type -3", min: 0, value: "" },
+      { id: "max-0", label: "max 0: type 5", max: 0, value: "" },
+      {
+        id: "min-5",
+        label: "min 5, max 20: type 12",
+        min: 5,
+        max: 20,
+        value: "",
+      },
+    ]);
+
+    return { cases };
+  },
+  template: `
+    <div class="flex flex-col gap-4 max-w-md">
+      <p class="text-sm">Type, then press Tab or Enter to clamp.</p>
+      <div v-for="item in cases" :key="item.id" class="flex flex-col gap-1">
+        <D9Label :id="item.id" :label="item.label" />
+        <D9Input
+          :id="item.id"
+          type="number"
+          :min="item.min"
+          :max="item.max"
+          v-model="item.value"
+          block
+        />
+        <code class="text-xs">{{ JSON.stringify(item.value) }} ({{ typeof item.value }})</code>
+      </div>
+    </div>
+  `,
+});
 
 export const FocusAfterAdd = () => ({
   components: { D9Button, D9Input },
