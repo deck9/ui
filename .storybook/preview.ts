@@ -1,4 +1,4 @@
-import "../styles/app.less";
+import "../styles/app.css";
 
 export const parameters = {
   controls: {
