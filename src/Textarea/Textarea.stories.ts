@@ -1,5 +1,4 @@
 import { D9Textarea } from "../index";
-import { icons } from "../index";
 import { v4 as uuidv4 } from "uuid";
 import { ref } from "vue";
 

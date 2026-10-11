@@ -23,7 +23,7 @@ export default {
   ],
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { D9Icon },
   setup() {
     return { args };

@@ -5,7 +5,7 @@
       <div v-if="title" class="w-full h-8 bg-current rounded-lg"></div>
     </div>
 
-    <div v-if="lines > 0" class="mt-6 space-y-2">
+    <div v-if="lineSettings.length > 0" class="mt-6 space-y-2">
       <div
         v-for="(setting, index) in lineSettings"
         class="h-4 bg-current rounded-lg"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults } from "vue";
+import { computed, withDefaults } from "vue";
 
 interface SkeletonProps {
   avatar?: boolean;
@@ -35,13 +35,12 @@ const props = withDefaults(defineProps<SkeletonProps>(), {
   footer: false,
 });
 
+// Full class names, so Tailwind finds them in the built bundle
+const margins = ["mr-4", "mr-5", "mr-6", "mr-8", "mr-10", "mr-16", "mr-24", "mr-32"];
 
-const lineSettings = new Array(props.lines).fill(undefined).map(() => {
-  const margins = [4, 5, 6, 8, 10, 16, 24, 32];
-  const margin = margins[Math.floor(Math.random() * margins.length)]
-
-  return {
-    margin: `mr-${margin}`,
-  };
-});
+const lineSettings = computed(() =>
+  Array.from({ length: Math.max(0, Math.floor(props.lines)) }, () => ({
+    margin: margins[Math.floor(Math.random() * margins.length)],
+  })),
+);
 </script>
