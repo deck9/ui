@@ -5,7 +5,7 @@
       :class="[inputClasses, textSizeClasses, disabledClasses]"
       :placeholder="placeholder"
       :type="resolvedInputType"
-      :tabindex="isDisabled ? '-1' : undefined"
+      :disabled="isDisabled"
       :value="localValue"
       v-bind="$attrs"
       ref="inputElement"
@@ -17,6 +17,7 @@
         <input
           class="invisible"
           type="color"
+          :disabled="isDisabled"
           v-model="localValue"
           @input="onInput"
         />
@@ -30,6 +31,7 @@
         v-if="isColorPickerSupported && showColorPicker"
         type="button"
         class="absolute inset-y-2 right-2 h-7 w-7 rounded-full hover:bg-grey-200"
+        :disabled="isDisabled"
         @click="openPicker"
       >
         <D9Icon size="xs" name="eyedropper" />

@@ -17,6 +17,7 @@
         :checked="modelValue"
         @change="update"
         :id="id"
+        v-bind="$attrs"
       />
     </div>
     <div class="ml-2 text-sm leading-5">
@@ -34,6 +35,12 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
 
 <script setup lang="ts">
 import { withDefaults } from "vue";
