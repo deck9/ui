@@ -1,7 +1,7 @@
 <template>
   <Switch
+    :id="id"
     :modelValue="modelValue"
-    :label="label"
     :class="modelValue ? 'bg-blue-700' : 'bg-grey-700'"
     @update:modelValue="update"
     class="
@@ -42,12 +42,11 @@ withDefaults(
     id?: string;
     label: string;
     modelValue: boolean;
-    description?: string;
     onLabel?: string;
     offLabel?: string;
   }>(),
   {
-    id: uuidv4(),
+    id: () => uuidv4(),
     offLabel: "off",
     onLabel: "on",
   }
