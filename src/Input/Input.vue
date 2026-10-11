@@ -151,11 +151,9 @@ const onInput = function (payload: Event): void {
   emit("update:modelValue", localValue.value);
 };
 
-const input = ref(null) as unknown as Ref<HTMLInputElement>;
-
 const focus = (): void => {
   if (!props.isDisabled) {
-    input.value.focus();
+    inputElement.value?.focus();
   }
 };
 

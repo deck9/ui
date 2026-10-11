@@ -1,7 +1,7 @@
-import { D9Input } from "../index";
+import { D9Button, D9Input } from "../index";
 import { icons } from "../index";
 import { v4 as uuidv4 } from "uuid";
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 
 export default {
   title: "Forms/Input",
@@ -87,3 +87,33 @@ NumberInput.args = {
   max: 10,
   type: "number",
 };
+
+export const FocusAfterAdd = () => ({
+  components: { D9Button, D9Input },
+  setup() {
+    const policies = ref(["I accept the terms."]);
+    const inputs = ref<{ focus: () => void }[]>([]);
+
+    const addPolicy = async () => {
+      policies.value.push("");
+      await nextTick();
+      inputs.value[policies.value.length - 1]?.focus();
+    };
+
+    return { policies, inputs, addPolicy };
+  },
+  template: `
+    <div class="flex flex-col gap-2 max-w-md">
+      <D9Input
+        v-for="(policy, i) in policies"
+        :key="i"
+        :ref="(el) => (inputs[i] = el)"
+        v-model="policies[i]"
+        :aria-label="'Policy ' + (i + 1)"
+        placeholder="Policy text"
+        block
+      />
+      <D9Button label="Add new policy" @click="addPolicy" />
+    </div>
+  `,
+});
