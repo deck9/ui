@@ -15,16 +15,23 @@ export default defineConfig({
       fileName: "src/ui",
     },
     rollupOptions: {
+      // Peer and runtime dependencies stay imports, so an app ships one copy of each
       external: [
         "vue",
-        "@fortawesome/fontawesome-svg-core",
-        "@fortawesome/free-solid-svg-icons",
-        "@fortawesome/free-brands-svg-icons",
-        "@fortawesome/vue-fontawesome",
+        /^@vue\//,
+        /^@fortawesome\//,
+        /^@headlessui\//,
+        /^@floating-ui\//,
+        /^@vueuse\//,
+        "uuid",
       ],
       output: {
         globals: {
           vue: "Vue",
+          "@headlessui/vue": "HeadlessUIVue",
+          "@floating-ui/vue": "FloatingUIVue",
+          "@vueuse/core": "VueUse",
+          uuid: "uuid",
         },
       },
     },
