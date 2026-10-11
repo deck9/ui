@@ -5,7 +5,7 @@
   "author": "Philipp Reinking <philipp@deck9.co> (https://deck9.co)",
   "scripts": {
     "check": "vue-tsc --noEmit",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "build": "vue-tsc --noEmit && vite build",
     "test": "vitest run",
     "storybook": "storybook dev -p 6006",
