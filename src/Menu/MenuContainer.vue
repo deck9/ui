@@ -45,14 +45,7 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
 import { D9Icon } from "../index";
-import {
-  Comment,
-  onMounted,
-  ref,
-  watchEffect,
-  withDefaults,
-  type VNode,
-} from "vue";
+import { Comment, ref, withDefaults, type VNode } from "vue";
 import { useFloating, autoUpdate, flip, shift, offset } from "@floating-ui/vue";
 
 const props = withDefaults(
