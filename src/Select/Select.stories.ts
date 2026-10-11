@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { D9Select } from "../index";
+import { D9Label, D9Select } from "../index";
 import { icons } from "../index";
 
 export default {
@@ -134,6 +134,20 @@ export const CopyingParent = () => ({
     <div class="w-56 space-y-1">
       <D9Select placeholder="Please select..." :model-value="model" :options="people" @update:model-value="store" />
       <p class="text-xs text-grey-600">update:modelValue emits: {{ emits }}</p>
+    </div>
+  `,
+});
+
+// A D9Label linked by id: clicking the label text opens the select
+export const WithLabel = () => ({
+  components: { D9Label, D9Select },
+  setup() {
+    return { people };
+  },
+  template: `
+    <div class="w-56 space-y-1">
+      <D9Label id="assignee" label="Assignee" />
+      <D9Select id="assignee" placeholder="Please select..." :options="people" />
     </div>
   `,
 });

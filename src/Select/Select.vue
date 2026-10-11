@@ -7,6 +7,7 @@
   >
     <div class="relative">
       <ListboxButton
+        :id="id"
         class="w-full mono-50 bg-white text-grey-800 placeholder-grey-600 border border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:ring-2 focus:border-blue-400 focus:ring-blue-400 focus:outline-none dark:focus:border-blue-800 dark:focus:ring-blue-800 cursor-default rounded font-normal text-left"
         :class="[inputClasses, textSizeClasses, disabledClasses]"
       >
@@ -116,6 +117,7 @@ interface SelectOption {
 
 const props = withDefaults(
   defineProps<{
+    id?: string;
     modelValue?: SelectOption | null;
     size?: Size;
     icon?: string;

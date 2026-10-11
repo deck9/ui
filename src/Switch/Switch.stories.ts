@@ -1,4 +1,5 @@
 import D9Switch from "./Switch.vue";
+import D9Label from "../Label/Label.vue";
 import { ref } from "vue";
 
 export default {
@@ -39,3 +40,19 @@ WithDifferentStateLabels.args = {
   onLabel: "Yes",
   offLabel: "No",
 };
+
+// Same shape as Input's settings: a D9Label next to the switch, linked by id
+export const WithLabel = () => ({
+  components: { D9Label, D9Switch },
+  setup() {
+    const enabled = ref(false);
+
+    return { enabled };
+  },
+  template: `
+    <div class="w-72 flex justify-between items-center">
+      <D9Label id="email-notifications" label="Send email notifications" />
+      <D9Switch id="email-notifications" label="" v-model="enabled" onLabel="yes" offLabel="no" />
+    </div>
+  `,
+});
