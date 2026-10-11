@@ -18,14 +18,16 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm pack --dry-run
-      - name: Check that main and module are in the package
+      - name: Check that main, module, types and exports are in the package
         run: |
           npm pack --dry-run --json | node -e '
             const pkg = require("./package.json");
             const packed = JSON.parse(require("fs").readFileSync(0, "utf8"))[0].files.map((file) => file.path);
-            const missing = ["main", "module"].filter((field) => !packed.includes(require("path").normalize(pkg[field])));
+            const targets = (value, name) => typeof value === "string" ? [[name, value]] : Object.entries(value).flatMap(([key, inner]) => targets(inner, `${name}["${key}"]`));
+            const fields = [["main", pkg.main], ["module", pkg.module], ["types", pkg.types], ...targets(pkg.exports, "exports")];
+            const missing = fields.filter(([, file]) => !packed.includes(require("path").normalize(file)));
             if (missing.length) {
-              console.error(`Not in the package: ${missing.map((field) => `${field} ${pkg[field]}`).join(", ")}`);
+              console.error(`Not in the package: ${missing.map(([field, file]) => `${field} ${file}`).join(", ")}`);
               process.exit(1);
             }
           '
