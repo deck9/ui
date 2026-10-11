@@ -16,6 +16,7 @@ jobs:
         with:
           node-version-file: .nvmrc
       - run: npm ci
+      - run: npm test
       - run: npm run build
       - run: npm pack --dry-run
       - name: Check that main, module, types and exports are in the package
