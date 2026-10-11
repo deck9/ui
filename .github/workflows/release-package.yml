@@ -19,4 +19,9 @@ jobs:
           package-manager-cache: false # no cache in the release build
       - run: npm ci
       - run: npm run build
-      - run: npm publish
+      - name: Publish, prereleases under the next tag
+        run: |
+          case "$(node -p 'require("./package.json").version')" in
+            *-*) npm publish --tag next ;; # e.g. 0.16.0-next.0, latest stays on the last final release
+            *) npm publish ;;
+          esac
