@@ -90,12 +90,14 @@ LoadingAndDisabled.args = {
   isLoading: true,
 };
 
-// Each save keeps the button loading for 2 seconds: clicks and Enter during a save must not count.
+// Each save keeps the button loading for 2 seconds: clicks and Enter during a save must not count,
+// and a focused button keeps its focus ring through the save.
 export const SubmitDuringSave = (args: Record<string, unknown>) => ({
   components: { D9Button, D9Input },
   setup() {
     const saving = ref(false);
     const saves = ref(0);
+    const clicks = ref(0);
 
     const save = () => {
       saves.value++;
@@ -103,13 +105,13 @@ export const SubmitDuringSave = (args: Record<string, unknown>) => ({
       setTimeout(() => (saving.value = false), 2000);
     };
 
-    return { args, saving, saves, save };
+    return { args, saving, saves, clicks, save };
   },
   template: `
     <form class="flex items-center gap-2" @submit.prevent="save">
       <D9Input type="text" placeholder="Press Enter to save" />
-      <D9Button v-bind="args" type="submit" :isLoading="saving" />
-      <span class="text-sm">Saves: {{ saves }}</span>
+      <D9Button v-bind="args" type="submit" :isLoading="saving" @click="clicks++" />
+      <span class="text-sm tabular-nums">Clicks: {{ clicks }} · Saves: {{ saves }}</span>
     </form>`,
 });
 SubmitDuringSave.args = {

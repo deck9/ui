@@ -4,8 +4,10 @@
     type="button"
     :aria-label="label"
     :class="buttonClasses"
-    :disabled="isDisabled || isLoading"
+    :disabled="isDisabled"
+    :aria-disabled="isLoading || undefined"
     :aria-busy="isLoading"
+    @click="onClick"
   >
     <div :class="!isLoading || 'invisible'">
       <D9Icon
@@ -53,6 +55,9 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   isDisabled: false,
 });
 
+// Untyped on purpose: Input passes handlers with other signatures, e.g. useFileDialog's open.
+const emit = defineEmits(["click"]);
+
 const buttonClasses = computed(() => {
   const colors = {
     "text-white bg-blue-600 border-transparent hover:bg-blue-700 active:bg-blue-700 dark:ring-blue-800 ring-offset-2 dark:ring-offset-grey-900":
@@ -67,6 +72,7 @@ const buttonClasses = computed(() => {
 
   const disabledClasses = {
     "pointer-events-none opacity-75 cursor-not-allowed": props.isDisabled,
+    "cursor-default": props.isLoading,
   };
 
   const sizes = {
@@ -112,4 +118,14 @@ const iconClasses = computed(() => {
     ...colors,
   };
 });
+
+// Loading isn't native disabled, so the button keeps focus: stop the click and any form submit here.
+function onClick(event: MouseEvent) {
+  if (props.isLoading) {
+    event.preventDefault();
+    return;
+  }
+
+  emit("click", event);
+}
 </script>
