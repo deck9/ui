@@ -5,14 +5,6 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
-    {
-      name: "@storybook/addon-styling-webpack",
-      options: {
-        postCss: {
-          implementation: require("postcss"),
-        },
-      },
-    },
     "storybook-dark-mode",
     "@storybook/addon-mdx-gfm",
   ],
