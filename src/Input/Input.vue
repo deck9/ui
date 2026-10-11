@@ -5,11 +5,14 @@
       :class="[inputClasses, textSizeClasses, disabledClasses]"
       :placeholder="placeholder"
       :type="resolvedInputType"
+      :min="min"
+      :max="max"
       :disabled="isDisabled"
       :value="localValue"
       v-bind="$attrs"
       ref="inputElement"
       @input="onInput"
+      @change="onChange"
     />
 
     <template v-if="type === 'color'">
@@ -71,7 +74,7 @@ import { Size } from "../types/types";
 const props = withDefaults(
   defineProps<{
     modelValue?: string | number | null;
-    type: string;
+    type?: string;
     placeholder?: string;
     size?: Size;
     icon?: string;
@@ -91,10 +94,20 @@ const props = withDefaults(
 const inputElement = ref(null) as unknown as Ref<HTMLInputElement>;
 const localValue = ref<string | number | null>(props.modelValue ?? "");
 
+// A number input emits a number; an empty one emits "" as before.
+const toModelValue = (value: string | number | null) =>
+  props.type === "number" && value !== "" && value !== null
+    ? Number(value)
+    : value;
+
 watch(
   () => props.modelValue,
   (newValue) => {
-    if (typeof newValue !== "undefined" && newValue !== localValue.value) {
+    // Compare with what we emitted, so "8.0" isn't rewritten to "8" while typing.
+    if (
+      typeof newValue !== "undefined" &&
+      newValue !== toModelValue(localValue.value)
+    ) {
       localValue.value = newValue;
     }
   }
@@ -131,24 +144,27 @@ watch(sRGBHex, (value) => {
 });
 
 const onInput = function (payload: Event): void {
-  const value = (payload?.target as InputHTMLAttributes).value;
-
-  if (props.type === "number" && props.min && parseInt(value) < props.min) {
-    localValue.value = props.min;
-    inputElement.value.value = localValue.value.toString();
-    emit("update:modelValue", props.min);
-    return;
-  }
-
-  if (props.type === "number" && props.max && parseInt(value) > props.max) {
-    localValue.value = props.max;
-    inputElement.value.value = localValue.value.toString();
-    emit("update:modelValue", props.max);
-    return;
-  }
-
   localValue.value = (payload?.target as InputHTMLAttributes).value;
-  emit("update:modelValue", localValue.value);
+  emit("update:modelValue", toModelValue(localValue.value));
+};
+
+// Clamp on change (blur or Enter), so with min 5 typing "12" isn't cut off at "1".
+const onChange = function (): void {
+  const value = toModelValue(localValue.value);
+
+  if (typeof value !== "number") {
+    return;
+  }
+
+  const clamped = Math.min(
+    Math.max(value, props.min ?? -Infinity),
+    props.max ?? Infinity
+  );
+
+  if (clamped !== value) {
+    localValue.value = clamped;
+    emit("update:modelValue", clamped);
+  }
 };
 
 const focus = (): void => {
