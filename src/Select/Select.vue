@@ -1,5 +1,10 @@
 <template>
-  <Listbox as="div" v-model="selected" :disabled="isDisabled">
+  <Listbox
+    as="div"
+    :model-value="selected"
+    @update:model-value="onSelect"
+    :disabled="isDisabled"
+  >
     <div class="relative">
       <ListboxButton
         class="w-full mono-50 bg-white text-grey-800 placeholder-grey-600 border border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:ring-2 focus:border-blue-400 focus:ring-blue-400 focus:outline-none dark:focus:border-blue-800 dark:focus:ring-blue-800 cursor-default rounded font-normal text-left"
@@ -142,9 +147,9 @@ watch(
   }
 );
 
-watch(selected, (value) => {
-  if (value) {
-    emit("update:modelValue", value);
-  }
-});
+// emit only on a pick, so outside changes don't echo back to the parent
+const onSelect = (value: SelectOption) => {
+  selected.value = value;
+  emit("update:modelValue", value);
+};
 </script>

@@ -116,3 +116,24 @@ export const OutsideValueChanges = () => ({
     </div>
   `,
 });
+
+// The parent stores a copy of each pick, like useVModel with clone: true
+export const CopyingParent = () => ({
+  components: { D9Select },
+  setup() {
+    const model = ref(null);
+    const emits = ref(0);
+    const store = (value) => {
+      emits.value++;
+      model.value = { ...value };
+    };
+
+    return { people, model, emits, store };
+  },
+  template: `
+    <div class="w-56 space-y-1">
+      <D9Select placeholder="Please select..." :model-value="model" :options="people" @update:model-value="store" />
+      <p class="text-xs text-grey-600">update:modelValue emits: {{ emits }}</p>
+    </div>
+  `,
+});
