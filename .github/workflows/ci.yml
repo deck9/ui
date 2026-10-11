@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+      - run: npm ci
+      - run: npm run build
+      - run: npm pack --dry-run
+      - name: Check that main and module are in the package
+        run: |
+          npm pack --dry-run --json | node -e '
+            const pkg = require("./package.json");
+            const packed = JSON.parse(require("fs").readFileSync(0, "utf8"))[0].files.map((file) => file.path);
+            const missing = ["main", "module"].filter((field) => !packed.includes(require("path").normalize(pkg[field])));
+            if (missing.length) {
+              console.error(`Not in the package: ${missing.map((field) => `${field} ${pkg[field]}`).join(", ")}`);
+              process.exit(1);
+            }
+          '
