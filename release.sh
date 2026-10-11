@@ -13,7 +13,10 @@ npm run build
 PACKAGE_VERSION=$(npm version "$@")
 
 # atomic: if main is rejected, the tag stays local too, so no release can publish it
-git push --atomic origin HEAD "$PACKAGE_VERSION"
+git push --atomic origin HEAD "$PACKAGE_VERSION" || {
+  echo "Push failed. Undo the local bump, then run again: git tag -d $PACKAGE_VERSION && git reset --hard HEAD~1" >&2
+  exit 1
+}
 
 echo "Pushed new version $PACKAGE_VERSION"
 
