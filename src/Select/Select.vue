@@ -125,7 +125,7 @@ const props = withDefaults(
   }
 );
 
-const selected = props.modelValue ? ref(props.modelValue) : ref(undefined);
+const selected = ref(props.modelValue ?? null);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: SelectOption): void;
@@ -135,17 +135,14 @@ const { inputClasses, disabledClasses, textSizeClasses } =
   useFormClasses(props);
 
 watch(
-  () => props.modelValue as SelectOption,
-  (value: SelectOption) => {
-    if (!value) return;
-
-    if (value.id !== selected.value?.id) {
-      selected.value = value;
-    }
+  () => props.modelValue,
+  (value) => {
+    // null, not undefined: on undefined the Listbox falls back to its last pick
+    selected.value = value ?? null;
   }
 );
 
-watch(selected, (value?: SelectOption) => {
+watch(selected, (value) => {
   if (value) {
     emit("update:modelValue", value);
   }

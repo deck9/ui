@@ -1,3 +1,4 @@
+import { ref } from "vue";
 import { D9Select } from "../index";
 import { icons } from "../index";
 
@@ -73,3 +74,45 @@ WithIcon.args = {
   size: "medium",
   icon: "user",
 };
+
+// Same shape as Input's logic editor: options without `id`, rows keyed by index
+export const OutsideValueChanges = () => ({
+  components: { D9Select },
+  setup() {
+    const blocks = [
+      { key: "name", label: "What is your name?" },
+      { key: "age", label: "How old are you?" },
+      { key: "city", label: "Where do you live?" },
+    ];
+    const operators = [
+      { key: "equals", label: "is equal to" },
+      { key: "contains", label: "contains" },
+      { key: "isGreaterThan", label: "is greater than" },
+    ];
+    const initialRows = () => [
+      { source: blocks[0], operator: operators[0] },
+      { source: blocks[1], operator: operators[2] },
+    ];
+    const rows = ref(initialRows());
+    const reset = () => (rows.value = initialRows());
+
+    return { blocks, operators, rows, reset };
+  },
+  template: `
+    <div class="w-96 space-y-6">
+      <div v-for="(row, index) in rows" :key="index" class="space-y-1">
+        <div class="flex justify-between text-sm">
+          <span class="font-medium">Condition {{ index + 1 }}</span>
+          <span class="space-x-3">
+            <button type="button" class="text-grey-600" @click="row.source = null">Clear block</button>
+            <button type="button" class="text-red-600" @click="rows.splice(index, 1)">Remove</button>
+          </span>
+        </div>
+        <D9Select placeholder="Select a block" v-model="row.source" size="small" :options="blocks" />
+        <D9Select placeholder="Select an operator" v-model="row.operator" size="small" :options="operators" />
+        <p class="text-xs text-grey-600">Saved: {{ row.source?.label ?? "no block" }} · {{ row.operator?.label }}</p>
+      </div>
+      <button type="button" class="text-sm text-blue-600" @click="reset">Reset rows</button>
+    </div>
+  `,
+});
