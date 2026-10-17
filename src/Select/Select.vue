@@ -5,11 +5,13 @@
     @update:model-value="onSelect"
     :by="by"
     :disabled="isDisabled"
+    v-bind="wrapperAttrs"
   >
     <div class="relative">
       <ListboxButton
         :id="id"
         :aria-labelledby="labelledBy"
+        :aria-describedby="describedBy"
         class="w-full mono-50 bg-white text-grey-800 placeholder-grey-600 border border-grey-300 dark:bg-grey-800 dark:text-grey-100 dark:placeholder-grey-400 dark:border-grey-700 focus:ring-2 focus:border-blue-400 focus:ring-blue-400 focus:outline-none dark:focus:border-blue-800 dark:focus:ring-blue-800 cursor-default rounded font-normal text-left"
         :class="[inputClasses, textSizeClasses, disabledClasses]"
       >
@@ -111,6 +113,12 @@
   </Listbox>
 </template>
 
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
+
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
 import {
@@ -120,7 +128,14 @@ import {
   ListboxOptions,
 } from "@headlessui/vue";
 import { Size } from "../types/types";
-import { computed, onMounted, ref, watch, withDefaults } from "vue";
+import {
+  computed,
+  onMounted,
+  ref,
+  useAttrs,
+  watch,
+  withDefaults,
+} from "vue";
 import { useFormClasses } from "../utils/useFormClasses";
 
 interface SelectOption {
@@ -151,6 +166,15 @@ const props = withDefaults(
 );
 
 const selected = ref(props.modelValue ?? null);
+
+// aria-describedby belongs on the button the screen reader focuses; other attrs stay on the wrapper.
+const attrs = useAttrs();
+const describedBy = computed(() => attrs["aria-describedby"] as string);
+const wrapperAttrs = computed(() =>
+  Object.fromEntries(
+    Object.entries(attrs).filter(([name]) => name !== "aria-describedby")
+  )
+);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: SelectOption): void;
