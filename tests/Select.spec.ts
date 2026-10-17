@@ -23,4 +23,28 @@ describe("D9Select", () => {
 
     expect(wrapper.emitted("update:modelValue")).toBeUndefined();
   });
+
+  it("puts aria-describedby on the button and other attrs on the wrapper", () => {
+    const wrapper = mount(D9Select, {
+      props: { options },
+      attrs: { "aria-describedby": "x-help", class: "mt-2", "data-a": "1" },
+    });
+
+    expect(wrapper.find("button").attributes("aria-describedby")).toBe(
+      "x-help"
+    );
+    // the wrapper's opening tag is the first line of the markup
+    const wrapperTag = wrapper.html().split("\n")[0];
+    expect(wrapperTag).toContain('class="mt-2"');
+    expect(wrapperTag).toContain('data-a="1"');
+    expect(wrapperTag).not.toContain("aria-describedby");
+  });
+
+  it("shows a class set after the first render on the wrapper", async () => {
+    const wrapper = mount(D9Select, { props: { options } });
+
+    await wrapper.setProps({ class: "mt-2" });
+
+    expect(wrapper.html().split("\n")[0]).toContain('class="mt-2"');
+  });
 });
