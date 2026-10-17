@@ -113,12 +113,6 @@
   </Listbox>
 </template>
 
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-};
-</script>
-
 <script setup lang="ts">
 import D9Icon from "../Icon/Icon.vue";
 import {
@@ -164,6 +158,8 @@ const props = withDefaults(
     isDisabled: false,
   }
 );
+
+defineOptions({ inheritAttrs: false });
 
 const selected = ref(props.modelValue ?? null);
 
